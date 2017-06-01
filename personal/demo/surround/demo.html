@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3D图片环</title>
+<style>
+body{
+	background:#333;
+}
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#tips{
+	width:300px;
+	position:absolute;
+	left:0;
+	top:80px;
+}
+#tips p{
+	font-size:16px;
+	margin:10px;
+	color:#fff;
+}
+ul{
+	width:200px;
+	height:200px;
+	margin:200px 750px;
+	position:relative;
+	-webkit-transform-style:preserve-3d;
+	-moz-transform-style:preserve-3d;
+	-ms-transform-style:preserve-3d;
+	
+	-webkit-transform:perspective(800px) rotateX(-15deg);
+	-moz-transform:perspective(800px) rotateX(-15deg);
+	-ms-transform:perspective(800px) rotateX(-15deg);
+}
+li{
+	width:100%;
+	height:100%;
+	background:url(img3/1.jpg);
+	background-size:100% 100%;
+	position:absolute;
+	top:0;
+	left:0;
+	-webkit-transition:1s all ease;
+	-moz-transition:1s all ease;
+	-ms-transition:1s all ease;
+	
+	/*3层白色阴影*/
+	-webkit-box-shadow:
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 30px #fff;
+	
+	-moz-box-shadow:
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 30px #fff;
+	
+	-ms-box-shadow:
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 30px #fff;
+	
+	/*下方倒影，透明度渐变*/
+	-webkit-box-reflect:
+	below 20px
+	-webkit-linear-gradient(
+	rgba(0,0,0,0) 60%,
+	rgba(0,0,0,0.5));
+	
+	-moz-box-reflect:
+	below 20px
+	-moz-linear-gradient(
+	rgba(0,0,0,0) 60%,
+	rgba(0,0,0,0.5));
+	
+	-ms-box-reflect:
+	below 20px
+	-ms-linear-gradient(
+	rgba(0,0,0,0) 60%,
+	rgba(0,0,0,0.5));
+}
+/*ul:hover li{
+	transform:perspective(800px) rotateY(45deg) translateZ(100px);
+}*/
+</style>
+<script>
+window.onload=function(){
+	var oUl=document.querySelector("ul");
+		
+	var n=7;
+	for(var i=0;i<n;i++){
+		var oLi=document.createElement("li");
+		oLi.style.backgroundImage="url("+(i+1)+".jpg)";
+		oUl.appendChild(oLi);
+		
+		//每一个li都延迟100ms再运动,n-1:从最后一个往前
+		oLi.style.transition="0.2s all ease "+(n-i)*100+"ms";
+		
+		//定时器想让每个li都延迟300毫秒再旋转，但是循环一下子就执行完毕，创建出来的每个li还没来得及等300毫秒，就已经到了下一个li的创建并开启了下一个定时器，直到最后一个li创建完毕，并只执行了最后一个定时器，因此要给一个封闭空间，让每一个定时器都有机会执行
+		(function(oLi,i){
+			setTimeout(function(){
+				//父级ul已经3d化并且有景深，不用给子级加景深
+				//360度/li的个数*i=每个li各自所在的旋转位置
+				oLi.style.transform="rotateY("+360/n*i+"deg) translateZ(260px)";
+				//计算透明度，距离越远透明度越低
+				var scale=Math.abs(Math.abs((360/n*i+y)%360)-180)/180;
+				scale<0.4&&(scale=0.4);
+				aLi[i].style.opacity=scale;
+			},300)
+		})(oLi,i);
+	}
+	//拖拽
+	var aLi=oUl.children;
+	var y=0;//拟定一个y轴的旋转度数
+	var speedX=0;//定义加速度
+	var lastX=0;//用于松开鼠标前的最后坐标
+	var timer=null;
+	
+	document.onmousedown=function(ev){
+		clearInterval(timer);
+		var disX=ev.clientX-y;
+		
+		document.onmousemove=function(ev){
+			y=ev.clientX-disX;
+			change(y/4);
+			
+			//加速度推算理解1：当鼠标移动时，clientX是实时得到值，而lastX的初始值为0，所以随着鼠标移动总会得到一个或正或负的speedX。
+			
+			//加速度推算理解2：假如鼠标刚开始移动了+2，这时候lastX为0，speedX就是2，然后把clientX赋值给lastX，一套动作完成；当下次产生clientX时，lastX仍然是记录着上一次的clientX，总的来说是利用当前的clientX减去上一次记录的clientX来得到一个加速度speedX；因为lastX永远都是慢一拍的clientX，鼠标拖动越快，两个得到的差就越大。
+			speedX=ev.clientX-lastX;
+			console.log("clientX:"+ev.clientX+" |lastX:"+lastX+" |speedX:"+speedX);
+			lastX=ev.clientX;
+			console.log("clientX:"+ev.clientX+" |lastX:"+lastX);	
+		}
+		
+		document.onmouseup=function(){
+			document.onmouseup=null;
+			document.onmousemove=null;
+			
+			timer=setInterval(function(){
+				speedX=speedX*0.95;
+				y=y+speedX;
+				change(y/4);
+				
+				if(Math.abs(speedX)<=1){
+					clearInterval(timer);
+				}
+			},30);
+		}
+		return false;
+	}
+	//重新计算旋转位置、透明度的函数
+	function change(y){
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].style.transition="none";
+			//每个li各自所在的旋转位置+y=拖拽后的旋转位置
+			aLi[i].style.transform="rotateY("+(360/n*i+y)+"deg) translateZ(260px)";
+			//计算透明度，距离越远透明度越低
+			var scale=Math.abs(Math.abs((360/n*i+y)%360)-180)/180;
+			scale<0.4&&(scale=0.4);
+			aLi[i].style.opacity=scale;
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="tips">
+	<p>3D图片环</p>
+	<p>实现原理:</p>
+	<p>1、布局:一个容器ul，preserve-3d转换成3d模式，子级需要动态创建。</p>
+	<p>2、js:在ul内循环创建n个li，动态添加背景图。</p>
+	<p>3、js:让每个li平分360度的位置，旋转平移的位置等于360度除以li的个数。</p>
+	<p>4、js:按360度计算透明度，正前方透明度最高，两边一半，正后方最低。</p>
+	<p>5、js:拖拽document时，利用变化的横坐标来作为ul围绕y轴旋转的数值rotateY，因为每个li已经初始化过角度、透明度，因此拖拽时要在原有数值上加上变化的角度和透明度(重新计算)。</p>
+	<p>6、js:记录拖拽时最后两次的clientX，用它们相减获得一个速度。</p>
+	<p>7、js:拖拽放手后开启定时器来累加这个速度，并继续改变ul的旋转角度，而速度不断乘以一个少于1的数值来达到衰减。</p>
+	<p>8、js:当横向速度衰减到少于1时，清除定时器。</p>
+</div>
+<ul>
+	<!--<li></li>-->
+</ul>
+</body>
+</html>

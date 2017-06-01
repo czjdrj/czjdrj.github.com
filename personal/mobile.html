@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+<!--
+	name="viewport" 设置视口属性
+	width=device-width 设置页面初始化宽度 = 设备宽度
+	initial-scale=1.0 设置初始化的缩放比例 =1.0
+	user-scalable=no  禁止用户去缩放
+-->
+<title>Puzzle's Mobile</title>
+<link href="css/mobile_main.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
+<link href="font/iconfont.css" rel="stylesheet">
+<script src="js/mobile_rem.js"></script>
+</head>
+
+<body>
+<script src="js/zepto.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/mobile_init.js"></script>
+<!--顶部透明条-->
+<!--<div class="opacity_line"></div>-->
+<!--二维码-->
+<img class="qr_code" src="img/code.jpg" alt="qr_code" title="qr_code"/>
+<!--logo-->
+<div id="logo">
+    <a href="javascript:;">Puzzle's</a>
+</div>
+<!--天气-->
+<div id="weather" class="weather"><!--城市:广州--></div>
+<ul class="weather_list">
+    <!--<li>天气1</li>
+    <li>天气2</li>
+    <li>天气3</li>-->
+</ul>
+<!--翻页提示-->
+<div id="scr_tips" class="scr_tips iconfont icon-icon-copy"></div>
+<div id="scr_tips_text" class="scr_tips_text">滑动翻页</div>
+<!--简历内容开始-->
+<div id="page_box" class="page_box">
+	<!--简历按钮-->
+	<ul id="page_btn" class="page_btn clearfix">
+    	<li class="active">1</li>
+    	<li>2</li>
+    	<li>3</li>
+    	<li>4</li>
+    </ul>
+    <!--简历内容-->
+    <ul id="page_content" class="page_content">
+    	<!--第一页-->
+    	<li>
+        	<h3 id="page1_title" class="page_title">个人简介</h3>
+            <div class="page1_pic">
+            	<img class="up" src="img/pic1.jpg" alt="icon1"/>
+            	<img class="down" src="img/pic2.jpg" alt="icon2"/>
+            </div>
+            <div class="page1_msg">
+            	<p>哈喽，我叫程梓杰</p>
+            	<p>是一枚安静的程序猿</p>
+            	<p>毕业于广州大学华软软件学院</p>
+            	<p>具备一年+前端开发经验</p>
+            	<p>目前是一只野生码农</p>
+            	<p>想要成为你们的web前端工程师</p>
+            	<p>戳头像联系我吧</p>
+            	<p>小感悟:安静和专注是码农需要具备的重要属性!</p>
+            </div>
+        </li>
+        <!--第二页-->
+    	<li>
+        	<h3 id="page2_title" class="page_title">专业技能</h3>        
+            <!--按钮-->
+            <div id="scale_box" class="scale_box">
+                <div id="scale" class="scale clearfix">
+                    <div class="active">HTML5
+                    	<span>10%</span>
+                        <i></i>
+                    </div>
+                    <div>CSS3
+                    	<span>10%</span>
+                        <i></i>
+                    </div>
+                    <div>JQ
+                    	<span>10%</span>
+                        <i></i>
+                    </div>
+                    <div>JS
+                    	<span>10%</span>
+                        <i></i>
+                    </div>
+                </div>
+            </div>
+			<!--文案内容-->
+            <div id="skill_box" class="skill_box">
+                <ul class="skill">
+                    <li>
+                        <span>HTML5</span>
+                        <p>1、熟悉W3C标准，能熟练运用各种HTML标签构建设计稿。</p>
+                        <p>2、熟悉HTML5多媒体标签，如audio、video等。</p>
+                        <p>3、了解canvas、svg标签，能配合js绘制简单的画布动画效果。</p>
+                        <p>4、熟悉HTML5一些新特性，如捉取方法querySelector();本地储存localstorage;自定义属性data等。</p>
+                    </li>
+                    <li>
+                        <span>CSS3</span>
+                        <p>1、掌握预编译器Less和Sass的基本使用。</p>
+                        <p>2、熟练运用各种CSS样式高度还原设计稿。</p>
+                        <p>3、熟悉CSS3新特性，如transition、transform、animation等，能配合js实现常见动画效果。</p>
+                        <p>4、熟悉bootstrap的原理和弹性盒子的布局方式，兼容多终端。</p>
+                    </li>
+                    <li>
+                        <span>Jquery</span>
+                        <p>1、熟练运用Jquery进行项目开发。</p>
+                        <p>2、对JqueryMobile、Zepto、Swiper、iScroll等库或插件有一定了解。</p>
+                    </li>
+                    <li>
+                        <span>JavaScript</span>
+                        <p>1、熟练运用原生JavaScript进行项目开发，还原各种常见效果，解决各种浏览器的兼容问题。</p>
+                        <p>2、掌握DOM、BOM、Ajax、JSONP等常用前端技术，知道前端和后台交互技术的实现流程和原理。</p>
+                        <p>3、了解JavaScript面向对象的编程思想,能理解面向对象中的属性和方法的继承操作。</p>
+                        <p>4、了解MVC模块化思想。</p>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <!--第三页-->
+    	<li>
+        	<h3 id="page3_title" class="page_title">工作经历</h3>        
+            <div class="page3_work_box">
+                <ul  id="page3_work_ul" class="page3_work_ul">
+                    <li>
+                    	<span class="text a">1</span>
+                        <span class="text b">
+                            <p>广州四九游网络科技有限公司</p>
+                            <p class="text_date">2015/6--2016/7</p>
+                        </span>
+                        <span class="c">
+                            <p>Web前端开发</p>
+                            <p>1、负责游戏产品页面、后台页面的模板开发，各种常见视觉稿的实现，保证良好的浏览器兼容性。</p>
+                            <p>2、运用HTML5+CSS3实现PC端和移动端的整体布局，还原常见的动画效果。</p>
+                            <p>3、运用JavaScript和Jquery还原功能效果，如轮播图，选项卡等功能开发。</p>
+                            <p>4、运用Ajax配合后台完成数据交互和展现。</p>
+                            <p>5、编写自用开发流程文档。</p>
+                        </span>
+                    </li>
+                    <li>
+                    	<span class="text a">2</span>
+                        <span class="text b">
+                            <p>广州摩讯计算机科技有限公司</p>
+                            <p class="text_date">2013/12--2015/1</p>
+                        </span>
+                        <span class="c">
+                            <p>手游运营</p>
+                            <p>1、负责游戏产品《梦想西游》的日常运营工作。</p>
+                            <p>2、各渠道的SDK对接。</p>
+                            <p>3、游戏日常数据统计与分析。</p>
+                            <p>4、日常、节日活动的策划与执行。</p>
+                            <p>5、VIP用户的维护与管理。</p>
+                        </span>
+                    </li>
+                    <li>
+                    	<span class="text a">3</span>
+                        <span class="text b">
+                            <p>广州多益网络科技有限公司</p>
+                            <p class="text_date">2010/7--2013/3</p>
+                        </span>
+                        <span class="c">
+                            <p>质检组长</p>
+                            <p>1、负责《神武》、《梦想世界》、《梦想帝王》、《命运之轮》等产品的工作分配。</p>
+                            <p>2、对各产品客服人员的电话服务，专区答疑进行质量检测，评级。</p>
+                            <p>3、对各产品内容玩法提出优化建议。</p>
+                            <p>4、对各产品官网提出优化建议。</p>
+                            <p>5、各产品论坛板块的维护。</p>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <!--第四页-->
+    	<li>
+        	<h3 id="page4_title" class="page_title">联系方式</h3>        
+            <div id="contact" class="contact">
+                <!--电话-->
+                <div class="icon">
+                    <i class="opa_box"></i>
+                    <span class="iconfont icon-phone"></span>
+                    <div class="front_box">
+                        <span class="front">1</span>
+                    </div>
+                </div>
+                <!--微信-->
+                <div class="icon">
+                    <i class="opa_box"></i>
+                    <span class="iconfont icon-weixin"></span>
+                    <div class="front_box">
+                        <span class="front">2</span>
+                    </div>
+                </div>
+                <!--QQ-->
+                <div class="icon">
+                    <i class="opa_box"></i>
+                    <span class="iconfont icon-qq"></span>
+                    <div class="front_box">
+                        <span class="front">3</span>
+                    </div>
+                </div>
+                <!--邮箱-->
+                <div class="icon">
+                    <i class="opa_box"></i>
+                    <span class="iconfont icon-youxiang"></span>
+                    <div class="front_box">
+                        <span class="front">4</span>
+                    </div>
+                </div>
+            </div>
+			<p id="page4_front2" class="page4_front2">感谢每一位耗费时间看到这里的人</p>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无缝banner</title>
+<style>
+body{
+	background:#333;
+}
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-decoration:none;
+}
+#tips{
+	width:300px;
+	position:absolute;
+	left:0;
+	top:100px;
+}
+#tips p{
+	font-size:16px;
+	margin:10px;
+	color:#fff;
+}
+#box{
+	width:700px;
+	height:397px;
+	margin:150px 400px;
+	position:relative;
+	top:0;
+	left:0;
+	overflow:hidden;
+}
+#box ul{
+	position:absolute;
+	top:0;
+	left:0;
+}
+#box ul li{
+	float:left;
+	width:700px;
+}
+#box ul li img{
+	width:100%;
+}
+#box ol{
+	width:250px;
+	position:absolute;
+	left:50%;
+	bottom:20px;
+	margin-left:-125px;
+	display:none;
+}
+#box ol li{
+	width:30px;
+	height:30px;
+	background:rgba(0,0,0,0.4);
+	float:left;
+	border-radius:50%;
+	color:#fff;
+	text-align:center;
+	line-height:30px;
+	font-weight:bold;
+	/*text-indent:-99999px;*/
+	margin:0 10px;
+	cursor:pointer;
+}
+#box ol li.active{
+	background:#096;
+}
+#box a{
+	position:absolute;
+	width:80px;
+	height:80px;
+	text-align:center;
+	line-height:80px;
+	top:50%;
+	margin-top:-40px;
+	font-size:30px;
+	color:#fff;
+	background:rgba(0,0,0,0.5);
+	display:none;
+}
+#box a:hover{
+	background:#096;
+}
+#prev{
+	left:0;
+}
+#next{
+	right:0;
+}
+</style>
+<script src="move.js"></script>
+<script>
+window.onload=function(){
+	var oBox=document.getElementById("box");
+	var oContentBox=document.getElementById("content_box");
+	var oBtnBox=document.getElementById("btn_box");
+	var aBtn=oBtnBox.children;
+	var oPrev=document.getElementById("prev");
+	var oNext=document.getElementById("next");
+	
+	var now=0;
+	var ready=true;
+	//给ul增加一倍的li，做无缝的准备
+	oContentBox.innerHTML=oContentBox.innerHTML+oContentBox.innerHTML;
+	//增加ul的长度
+	oContentBox.style.width=oContentBox.children[0].offsetWidth*oContentBox.children.length+"px";
+
+	oBox.onmouseover=function(){
+		oPrev.style.display="block";
+		oNext.style.display="block";
+		oBtnBox.style.display="block";
+	}
+	oBox.onmouseout=function(){
+		oPrev.style.display="none";
+		oNext.style.display="none";
+		oBtnBox.style.display="none";
+	}
+	//选项卡
+	for(var i=0;i<aBtn.length;i++){
+		aBtn[i].index=i;
+		aBtn[i].onclick=function(){
+			now=this.index;
+			tab();
+		}
+	}
+	function tab(){
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].className="";
+		}
+		if(now==5){//如果当前张超过了ul的一半，到达了第6张，就把第一个按钮激活
+			aBtn[0].className="active";
+		}else{
+			aBtn[now].className="active";
+		}
+		//oContentBox.style.left=-this.index*oContentBox.children[0].offsetWidth+"px";
+		//调用运动框架
+		startMove(oContentBox,{left:-now*oContentBox.children[0].offsetWidth},{duration:1000,easing:"ease-out",complete:function(){
+			//到达第6张图，并运动完毕时，整个ul的left归0，now变成0
+			if(now==5){
+				oContentBox.style.left=0;
+				now=0;
+			}
+			ready=true;
+		}});
+	}
+	
+	oNext.onclick=function(){
+		if(ready==false)return;
+		ready=false;
+		now++;
+		//if(now==5)now=0;
+		tab();
+	}
+	oPrev.onclick=function(){
+		if(ready==false)return;
+		ready=false;
+		//if(now==-1)now=4;
+		//now=0时，先不运动，让整个ul的left跳到第6张，now变成4，再运动
+		if(now==0){
+			oContentBox.style.left=-oContentBox.offsetWidth/2+"px";
+			now=4;
+		}else{
+			now--;
+		}
+		tab();
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="tips">
+	<p>无缝滚动banner</p>
+	<p>实现原理:</p>
+	<p>1、布局:把ul的innerHTML复制一份，浮动排列。</p>
+	<p>2、js:在普通选项卡的基础上增加无缝滚动的判断。</p>
+	<!--<p>3、js:重点在于next和prev的事件判断；next被点击时正常调用tab()函数，在tab里面需要判断li是否到达第6张，然后把第1个按钮激活，并正常运动到第6张，完毕时将整个ul的left归0，now归0；prev被点击时，判断是否在第1张，然后将整个ul的left跳到第6张，now变成4，最后再运动。</p>-->
+	<p>3、js:重点在于next和prev的事件判断；next到底时，先运动，再归位；prev到底时，先归位，再运动。</p>
+	<p>4、js:添加开关。</p>
+</div>
+<div id="box">
+	<ul id="content_box">
+		<li><img src="img/0.jpg"/></li>
+		<li><img src="img/1.jpg"/></li>
+		<li><img src="img/2.jpg"/></li>
+		<li><img src="img/3.jpg"/></li>
+		<li><img src="img/4.jpg"/></li>
+	</ul>
+	<ol id="btn_box">
+		<li class="active">0</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ol>
+	<a href="javascript:;" id="prev">prev</a>
+	<a href="javascript:;" id="next">next</a>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>弹性导航栏</title>
+<style>
+body{
+	background:#333;
+}
+*{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.clearfix:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.clearfix{
+	zoom:1;
+}
+#tips{
+	width:300px;
+	position:absolute;
+	left:0;
+	top:100px;
+}
+#tips p{
+	font-size:16px;
+	margin:10px;
+	color:#fff;
+}
+#nav{
+	width:714px;
+	margin:150px 400px;
+	position:relative;
+}
+#nav li{
+	width:100px;
+	height:40px;
+	border:1px solid #000;
+	float:left;
+	text-align:center;
+	line-height:40px;
+	background:rgba(0,0,0,0.2);
+	color:#fff;
+	cursor:pointer;
+}
+#nav .block{
+	background:#096;
+	position:absolute;
+	border:1px solid #000;
+	left:0;
+	top:0;
+	z-index:-1;
+}
+</style>
+<script>
+window.onload=function(){
+	var oNav=document.querySelector("#nav");
+	var aLi=oNav.children;
+	var oBlock=document.querySelector("#block");
+	var nowLeft=0;//block每次运动的起始位置
+	var l=0;//记录每次运动的左边距
+	
+	for(var i=0;i<aLi.length-1;i++){
+		aLi[i].onmouseover=function(){
+			move(oBlock,this.offsetLeft);
+		}
+		aLi[i].onmouseout=function(){
+			move(oBlock,nowLeft);
+		}
+		aLi[i].onclick=function(){
+			clearInterval(oBlock.timer);
+			oBlock.style.left=this.offsetLeft+"px";
+			nowLeft=this.offsetLeft;//更新起始位置
+			l=this.offsetLeft;//更新左边距+加速度
+		}
+	}
+	
+	function move(obj,target){
+		var speed=0;//加速度
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			//加速度
+			console.log("目标位置:"+target);
+			console.log("总路程:"+(target-obj.offsetLeft));
+			console.log("速度/每一步走多少:"+(target-obj.offsetLeft)/10);
+			//目标位置-起始位置/10，把总路程分为10步走，每一步就是速度
+			speed=speed+(target-obj.offsetLeft)/10;
+			console.log("一步一步累加:"+speed);
+			//衰减
+			speed=speed*0.7;
+			console.log("block原始左边距:"+l);
+			console.log("block原始左边距+累加的速度:"+l+speed);
+			//左边距=原始左边距+累加后的速度
+			l=l+speed;
+			console.log("block左边距累加:"+l);
+			obj.style.left=Math.round(l)+"px";
+			if(target==obj.offsetLeft&&Math.abs(speed)<1){
+				clearInterval(obj.timer);
+			}
+		},16);
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="tips">
+	<p>弹性导航栏</p>
+	<p>实现原理:</p>
+	<p>1、布局:运动小块的z-index为-1，ul和li都在小块的上面。</p>
+	<p>2、js:编写弹性的运动框架move()，重点公式:加速度公式:speed=speed+(target-obj.offsetLeft)/补间数；速度衰减:speed=speed*0.7；左边距:l=l+speed。</p>
+	<p>3、js:遍历所有li，当鼠标滑入li时，使小块运动到当前li的位置；当鼠标离开li时，使小块回到原来的位置。</p>
+	<p>4、js:当鼠标点击li时，小块的原始位置更新为当前li的位置，小块的左边距更新为当前的左边距。</p>
+</div>
+<ul id="nav" class="clearfix">
+	<li>新闻</li>
+	<li>热点</li>
+	<li>娱乐</li>
+	<li>汽车</li>
+	<li>手机</li>
+	<li>电影</li>
+	<li>社会</li>
+	<li id="block" class="block"></li>
+</ul>
+</body>
+</html>

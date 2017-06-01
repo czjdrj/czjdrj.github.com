@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>视差banner</title>
+<link rel="stylesheet" href="base.css">
+<style>
+body{
+	background:#333;
+}
+#tips{
+	width:300px;
+	position:absolute;
+	left:0;
+	top:100px;
+}
+#tips p{
+	font-size:16px;
+	margin:10px;
+	color:#fff;
+}
+.pagetext{
+	/*transform:perspective(800px);*/
+}
+/*背景层 3d*/
+.pagetext .bg{
+	position:relative;
+	width:800px;
+	height:400px;
+	margin:120px 400px;
+	background:rgba(0,0,0,0.5);
+	background-size:100% 100%;
+	border-radius:10px;
+	-webkit-transform-style:preserve-3d;
+	-moz-transform-style:preserve-3d;
+	-ms-transform-style:preserve-3d;
+	
+	-webkit-transition:0.2s all ease;
+	-moz-transition:0.2s all ease;
+	-ms-transition:0.2s all ease;
+	
+	-webkit-transform:perspective(800px) rotateX(0deg) rotateY(0deg);
+	-moz-transform:perspective(800px) rotateX(0deg) rotateY(0deg);
+	-ms-transform:perspective(800px) rotateX(0deg) rotateY(0deg);
+}
+/*内容层*/
+.pagetext .bg .text{
+	position:absolute;
+	font-weight:bold;
+}
+.pagetext .bg .a{
+	width:800px;
+	height:400px;
+	border-radius:10px;
+	background:url(1-1.png) no-repeat;
+	background-size:100% 100%;
+	-webkit-transform:perspective(800px) translateZ(0px);
+	-moz-transform:perspective(800px) translateZ(0px);
+	-ms-transform:perspective(800px) translateZ(0px);
+}
+.pagetext .bg .b{
+	width:800px;
+	height:400px;
+	top:10px;
+	background:url(2-2.png) no-repeat;
+	background-size:100% 100%;
+	-webkit-transform:perspective(800px) translateZ(20px);
+	-moz-transform:perspective(800px) translateZ(20px);
+	-ms-transform:perspective(800px) translateZ(20px);
+}
+.pagetext .bg .c{
+	width:800px;
+	height:400px;
+	background:url(3-3.png) no-repeat;
+	background-size:100% 100%;
+	-webkit-transform:perspective(800px) translateZ(40px);
+	-moz-transform:perspective(800px) translateZ(40px);
+	-ms-transform:perspective(800px) translateZ(40px);
+}
+</style>
+<script>
+function getPos(obj){
+	var l=0;
+	var t=0;
+	while(obj){
+		l+=obj.offsetLeft;//累加
+		t+=obj.offsetTop;
+		obj=obj.offsetParent;//更新参考点
+	}
+	return {left:l,top:t};
+}
+window.onload=function(){
+	var oBg=document.querySelector("#bg");
+	
+	press3D(oBg);
+	function press3D(obj){
+		obj.onmouseenter=function(){
+			//记录页面边距 宽高
+			var thisLeft=getPos(obj).left;
+			var thisTop=getPos(obj).top;
+			//console.log(thisLeft,thisTop);
+			
+			obj.onmousemove=function(ev){
+				//记录鼠标X Y
+				var X=ev.clientX-thisLeft;
+				var Y=ev.clientY-thisTop;
+				//初始化旋转角度
+				var rotateX=0;
+				var rotateY=0;
+				//console.log(X,Y);
+				
+				//计算Y轴 X轴旋转角度
+				if(X>obj.offsetWidth/2){
+					rotateY=X-obj.offsetWidth/2;
+				}else{
+					rotateY=X-obj.offsetWidth/2;
+				}
+				if(Y>obj.offsetHeight/2){
+					rotateX=-(Y-obj.offsetHeight/2);
+				}else{
+					rotateX=-(Y-obj.offsetHeight/2);
+				}
+				console.log(rotateX,rotateY);
+				obj.style.transform="perspective(800px) rotateY("+rotateY/50+"deg) rotateX("+rotateX/50+"deg)";
+			}
+			
+			obj.onmouseleave=function(){
+				obj.style.transform="perspective(800px) rotateX(0deg) rotateY(0deg)";
+			}
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="tips">
+	<p>视差banner效果</p>
+	<p>实现原理:</p>
+	<p>1、布局:利用translateZ分成多个图层，每个图层距离越大，视差越明显。</p>
+	<p>2、js:鼠标滑入banner图时获取对象横向、纵向边距，鼠标移动时用clientX或clientY与获取到的边距相减，得到一个鼠标在banner图内的坐标。</p>
+	<p>3、js:利用这个坐标与banner图的双向中轴线作比较。</p>
+	<p>4、js:分别改变banner图的rotateX和rotateY。</p>
+</div>
+<div class="pagetext">
+    <div id="bg" class="bg">
+        <span class="text a"></span>
+        <span class="text b"></span>
+        <span class="text c"></span>
+    </div>
+</div>
+</body>
+</html>

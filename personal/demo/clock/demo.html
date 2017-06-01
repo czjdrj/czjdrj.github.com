@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3时钟</title>
+<style>
+body{
+	background:#333;
+}
+#tips{
+	width:300px;
+	position:absolute;
+	left:0;
+	top:150px;
+}
+#tips p{
+	font-size:16px;
+	margin:10px;
+	color:#fff;
+}
+.clock{
+	width:300px;
+	height:300px;
+	background:url(bg.jpg);
+	border-radius:50%;
+	margin:100px auto;
+	position:relative;
+}
+.clock p{
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform-origin:bottom;
+	-moz-transform-origin:bottom;
+	-ms-transform-origin:bottom;
+}
+.hours{
+	width:20px;
+	height:80px;
+	background:#000;
+	margin-left:-10px;
+	margin-top:-80px;
+	border-radius:50% 50% 0 0;
+}
+.min{
+	width:16px;
+	height:100px;
+	background:#000;
+	margin-left:-8px;
+	margin-top:-100px;
+	border-radius:50% 50% 0 0;
+}
+.sec{
+	width:10px;
+	height:120px;
+	background:red;
+	margin-left:-5px;
+	margin-top:-120px;
+	border-radius:50% 50% 0 0;
+}
+.step{
+	width:20px;
+	height:20px;
+	background:-webkit-radial-gradient(#666,#fff);
+	background:-moz-radial-gradient(#666,#fff);
+	background:-ms-radial-gradient(#666,#fff);
+	margin-left:-10px;
+	margin-top:-10px;
+	border-radius:50%;
+}
+</style>
+<script>
+window.onload=function(){
+	var oH=document.querySelector(".hours");
+	var oM=document.querySelector(".min");
+	var oS=document.querySelector(".sec");
+	
+	clock();
+	setInterval(clock,16);
+	
+	function clock(){
+		var d=new Date();
+		var nH=d.getHours();
+		var nM=d.getMinutes();
+		var nS=d.getSeconds();
+		var nMs=d.getMilliseconds();
+		
+		var iH=nH%12*30+nM/60*30;
+		var iM=nM*6+nS/60*6;
+		var iS=nS*6+nMs/1000*6;
+		
+		oH.style.transform="rotate("+iH+"deg)";
+		oM.style.transform="rotate("+iM+"deg)";
+		oS.style.transform="rotate("+iS+"deg)";
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="tips">
+	<p>CSS3时钟</p>
+	<p>实现原理:</p>
+	<p>1、布局:画好时分秒针，旋转位置设置在底部transform-origin:bottom。</p>
+	<p>2、js:获取时间对象。</p>
+	<p>3、js:时针旋转度数=几时*30+几分/60*30，分针旋转度数=几分*6+几秒/60*6，秒针旋转度数=几秒*6+几毫秒/1000*6。</p>
+	<p>4、js:样式rotate改变时分秒针的度数。</p>
+</div>
+<div class="clock">
+	<p class="hours"></p>
+	<p class="min"></p>
+	<p class="sec"></p>
+	<p class="step"></p>
+</div>
+</body>
+</html>
