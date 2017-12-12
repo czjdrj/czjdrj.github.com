@@ -2,4 +2,4 @@
 
 gitHub page:
 
-https://czjdrj.github.io/index.html
+https://czjdrj.github.io/
