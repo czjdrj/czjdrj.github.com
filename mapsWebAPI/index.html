@@ -39,8 +39,8 @@
 		div{
 			font-size:.3rem;
 		}
-		.mg-b{
-			margin-bottom:.5rem;
+		.mg-t{
+			margin-top:.5rem;
 		}
 		.img-wrap{
 			display:block;
@@ -66,20 +66,20 @@
 </head>
 <body>
 	<div id="h5Lng">h5经度：</div>
-	<div id="h5Lat" class="mg-b">h5纬度：</div>
+	<div id="h5Lat">h5纬度：</div>
 
 	<!-- 百度 -->
-	<div id="bdLng">百度经度：</div>
+	<div id="bdLng" class="mg-t">百度经度：</div>
 	<div id="bdLat">百度纬度：</div>
 	<div id="bdCountry">国家：</div>
 	<div id="bdCity">城市：</div>
-	<div id="bdDetial" class="mg-b">地址：</div>
+	<div id="bdDetial">地址：</div>
 
-	<div>我的位置：</div>
+	<div class="mg-t">我的位置-webAPI：</div>
 	<a id="bdImgWrap" class="img-wrap" href="javascript:;">
 		<img id="bdImg" src="" alt="">
 	</a>
-	<div>假设目的地（西塔）：</div>
+	<div class="mg-t">假设目的地-webAPI（西塔）：</div>
 	<a id="bdImgWrapTag" class="img-wrap" href="javascript:;">
 		<img id="bdImgTag" src="" alt="">
 	</a>
@@ -90,11 +90,11 @@
 	</div>
 
 	<!-- 高德 -->
-	<!-- <div id="gdLng">高德经度：</div>
+	<!-- <div id="gdLng" class="mg-t">高德经度：</div>
 	<div id="gdLat">高德纬度：</div>
 	<div id="gdCountry">国家：</div>
 	<div id="gdCity">城市：</div>
-	<div id="gdDetial" class="mg-b">地址：</div> -->
+	<div id="gdDetial">地址：</div> -->
 
 	<script src="js/jquery.min.js"></script>
 	<script>
