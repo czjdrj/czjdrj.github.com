@@ -49,12 +49,15 @@
 			vertical-align:middle;
 			width:100%;
 		}
-		.nav{
-			display:block;
-			font-size:.26rem;
+		.nav-wrap{
+			display:flex;
+			justify-content:space-around;
+			align-items:center;
 			margin:.2rem 0;
-			padding:.2rem 0;
-			text-align:center;
+		}
+		.nav{
+			padding:.2rem .2rem;
+			font-size:.26rem;
 			color:#fff;
 			background:#096;
 			text-decoration:none;
@@ -80,7 +83,11 @@
 	<a id="bdImgWrapTag" class="img-wrap" href="javascript:;">
 		<img id="bdImgTag" src="" alt="">
 	</a>
-	<a id="nav" class="nav" href="javascript:;">尝试导航</a>
+	<div class="nav-wrap">
+		<a id="navDriv" class="nav" href="javascript:;">驾车前往</a>
+		<a id="navBus" class="nav" href="javascript:;">公交前往</a>
+		<a id="navWalk" class="nav" href="javascript:;">步行前往</a>
+	</div>
 
 	<!-- 高德 -->
 	<!-- <div id="gdLng">高德经度：</div>
@@ -173,7 +180,9 @@
 					        //目的地
 					        $("#bdImgTag").attr("src","https://api.map.baidu.com/staticimage/v2?ak=IHzbZKoki4dDrMrxslIdYHLIcAsUEmip&center=113.32952208482041,23.12391842047451&markers=113.32952208482041,23.12391842047451&markerStyles=l,A,0xFF0000&width=750&height=500&zoom=18");
 					        //导航
-					        $("#nav").attr("href","http://api.map.baidu.com/direction?origin=latlng:"+bdLat+","+bdLng+"|name:"+bdPos.detial+"&destination=latlng:23.12391842047451,113.32952208482041|name:广东省广州市天河区珠江西路5号国际金融中心&mode=driving&region=广州&output=html&src=测试");
+					        $("#navDriv").attr("href","http://api.map.baidu.com/direction?origin=latlng:"+bdLat+","+bdLng+"|name:"+bdPos.detial+"&destination=latlng:23.12391842047451,113.32952208482041|name:广东省广州市天河区珠江西路5号国际金融中心&mode=driving&region=广州&output=html&src=测试");
+					        $("#navBus").attr("href","http://api.map.baidu.com/direction?origin=latlng:"+bdLat+","+bdLng+"|name:"+bdPos.detial+"&destination=latlng:23.12391842047451,113.32952208482041|name:广东省广州市天河区珠江西路5号国际金融中心&mode=transit&region=广州&output=html&src=测试");
+					        $("#navWalk").attr("href","http://api.map.baidu.com/direction?origin=latlng:"+bdLat+","+bdLng+"|name:"+bdPos.detial+"&destination=latlng:23.12391842047451,113.32952208482041|name:广东省广州市天河区珠江西路5号国际金融中心&mode=walking&region=广州&output=html&src=测试");
 				        },
 				        error:function(){
 				            alert("连接超时");
