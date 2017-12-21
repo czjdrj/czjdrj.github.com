@@ -37,7 +37,7 @@
 			list-style:none;
 		}
 		div{
-			font-size:.3rem;
+			font-size:12px;
 		}
 		html,body,
 		.bdmap-wrap{
@@ -49,7 +49,7 @@
 			text-align:center;
 			width:70px;
 			padding:5px;
-			background:rgba(255,255,255,0.9);
+			background:rgba(255,255,255,0.8);
 			color:#000;
 			text-decoration:none;
 			cursor:pointer;
@@ -122,6 +122,9 @@
 
 					var mkStart = new BMap.Marker(start["position"]);//标记
 					map.addOverlay(mkStart);
+					if(start["position"]["lng"] != "" && start["position"]["lat"] != ""){
+						map.panTo(new BMap.Point(start["position"]["lng"],start["position"]["lat"]));//移动到
+					}
 
 					var startWindow = initContentWindow(start["positionDetial"],start["title"]);
 					mkStart.openInfoWindow(startWindow,start["position"]);//显示
@@ -191,6 +194,7 @@
 				div.appendChild(document.createTextNode("目的地"));
 				div.classList.add("ctr");
 				div.onclick = function(e){
+					map.panTo(new BMap.Point(end["position"]["lng"],end["position"]["lat"]));//移动到
 					mkEnd.openInfoWindow(endWindow,end["position"]);//显示
 				}
 				map.getContainer().appendChild(div);
