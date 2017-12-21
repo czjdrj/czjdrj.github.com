@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+	<title>bMap-sdk</title>
+	<script>
+		window.onerror = function (errMsg, scriptURI, lineNumber, columnNumber, errorObj) {
+		    setTimeout(function () {
+		        var rst = {
+		            "错误信息：": errMsg,
+		            "出错文件：": scriptURI,
+		            "出错行号：": lineNumber,
+		            "出错列号：": columnNumber,
+		            "错误详情：": errorObj
+		        };
+		        alert(JSON.stringify(rst, null, 10));
+		    });
+		};
+	</script>
+	<script>
+		(function(win,doc){
+			function change(){
+				//屏幕宽度/375*50 = font-size
+				doc.documentElement.style.fontSize=doc.documentElement.clientWidth/375*50+"px";
+				console.log("屏幕宽度："+doc.documentElement.clientWidth);
+				console.log("根字体大小："+doc.documentElement.style.fontSize);
+			}
+			change();
+			win.addEventListener("resize",change,false);
+		})(window,document);
+	</script>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			list-style:none;
+		}
+		div{
+			font-size:.3rem;
+		}
+		.bdmap-wrap{
+			width:100%;
+			height:5rem;
+		}
+		.ctr{
+			display:block;
+			text-align:center;
+			width:70px;
+			padding:5px;
+			background:rgba(255,255,255,0.9);
+			color:#000;
+			text-decoration:none;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<div>我的位置-bMap-sdk：</div>
+	<div id="bdMapWrap" class="bdmap-wrap"></div>
+
+	<script src="https://api.map.baidu.com/api?v=2.0&ak=IHzbZKoki4dDrMrxslIdYHLIcAsUEmip"></script>
+	<script src="js/jquery.min.js"></script>
+	<script>
+		//定位
+		var start = {
+			"title": "",
+			"position": {
+				"lng": "",
+				"lat": ""
+			},
+			"positionDetial": ""
+		}
+
+		//目的地
+		var end = {
+			"title": "目的地",
+			"position": {
+				"lng": "113.31821400036954",
+				"lat": "22.979820008361592"
+			},
+			"positionDetial": "广州市番禺区钟村镇钟四环村路3号"
+		}
+
+		//共用窗口
+		var initContentWindow = function(content,title){
+			var infoWindow = new BMap.InfoWindow(content,{
+				// width: 100,//信息窗口宽度
+				// height: 80,//信息窗口高度
+				title: title//信息窗口标题
+			});
+			return infoWindow;
+		}
+
+		//bMap
+		var map = new BMap.Map("bdMapWrap");
+		map.centerAndZoom("广州市",17);
+		map.addControl(new BMap.NavigationControl());//控件
+
+		//创建目的地
+		var mkEnd = new BMap.Marker(end["position"]);
+		map.addOverlay(mkEnd);
+
+		//目的地窗口
+		var endWindow = initContentWindow(end["positionDetial"],end["title"]);
+		mkEnd.openInfoWindow(endWindow,end["position"]);//显示
+		mkEnd.addEventListener("click",function(){
+			this.openInfoWindow(endWindow,end["position"]);
+		});
+
+		//定位
+		var getPosition = function(){
+			var geolocation = new BMap.Geolocation();
+			geolocation.getCurrentPosition(function(r){
+				console.log(r);
+				if(this.getStatus() == BMAP_STATUS_SUCCESS){
+					start["position"]["lng"] = r.point.lng;
+					start["position"]["lat"] = r.point.lat;
+					start["title"] = "我的位置：";
+					start["positionDetial"] = r.address.province + r.address.city + r.address.district + r.address.street + r.address.street_number; 
+
+					var mkStart = new BMap.Marker(start["position"]);//标记
+					map.addOverlay(mkStart);
+
+					var startWindow = initContentWindow(start["positionDetial"],start["title"]);
+					mkStart.openInfoWindow(startWindow,start["position"]);//显示
+					mkStart.addEventListener("click",function(){          
+						this.openInfoWindow(startWindow,start["position"]);
+					});
+
+					//添加自定义控件
+					addCtr();
+				}
+				else {
+					alert('failed'+this.getStatus());
+				}
+			},{enableHighAccuracy: true});//高精度
+		}
+		getPosition();
+
+		var addCtr = function(){
+			//添加自定义控件 - 我的位置
+			function myPisition(){
+			  this.defaultAnchor = BMAP_ANCHOR_BOTTOM_LEFT;
+			  this.defaultOffset = new BMap.Size(2,27);
+			}
+			//添加自定义控件 - 目的地
+			function tagPisition(){
+			  this.defaultAnchor = BMAP_ANCHOR_BOTTOM_LEFT;
+			  this.defaultOffset = new BMap.Size(2,59);
+			}
+			//添加自定义控件 - 驾车
+			function driv(){
+			  this.defaultAnchor = BMAP_ANCHOR_BOTTOM_LEFT;
+			  this.defaultOffset = new BMap.Size(86,2);
+			}
+			//添加自定义控件 - 公交
+			function bus(){
+			  this.defaultAnchor = BMAP_ANCHOR_BOTTOM_LEFT;
+			  this.defaultOffset = new BMap.Size(156,2);
+			}
+			//添加自定义控件 - 步行
+			function walk(){
+			  this.defaultAnchor = BMAP_ANCHOR_BOTTOM_LEFT;
+			  this.defaultOffset = new BMap.Size(226,2);
+			}
+
+			// 通过JavaScript的prototype属性继承于BMap.Control
+			myPisition.prototype = new BMap.Control();
+			tagPisition.prototype = new BMap.Control();
+			driv.prototype = new BMap.Control();
+			bus.prototype = new BMap.Control();
+			walk.prototype = new BMap.Control();
+
+			// 自定义控件必须实现自己的initialize方法,并且将控件的DOM元素返回
+			// 在本方法中创建个div元素作为控件的容器,并将其添加到地图容器中
+			myPisition.prototype.initialize = function(map){
+				var div = document.createElement("div");
+				div.appendChild(document.createTextNode("我的位置"));
+				div.classList.add("ctr");
+				div.onclick = function(e){
+					getPosition();
+				}
+				map.getContainer().appendChild(div);
+				return div;
+			}
+
+			tagPisition.prototype.initialize = function(map){
+				var div = document.createElement("div");
+				div.appendChild(document.createTextNode("目的地"));
+				div.classList.add("ctr");
+				div.onclick = function(e){
+					mkEnd.openInfoWindow(endWindow,end["position"]);//显示
+				}
+				map.getContainer().appendChild(div);
+				return div;
+			}
+
+			driv.prototype.initialize = function(map){
+				var a = document.createElement("a");
+				a.appendChild(document.createTextNode("驾车"));
+				a.classList.add("ctr");
+				a.href = "https://api.map.baidu.com/direction?origin=latlng:"+start["position"]["lat"]+","+start["position"]["lng"]+"|name:"+start["positionDetial"]+"&destination=latlng:"+end["position"]["lat"]+","+end["position"]["lng"]+"|name:"+end["positionDetial"]+"&mode=driving&region=广州&output=html&src=测试";
+				map.getContainer().appendChild(a);
+				return a;
+			}
+
+			bus.prototype.initialize = function(map){
+				var a = document.createElement("a");
+				a.appendChild(document.createTextNode("公交"));
+				a.classList.add("ctr");
+				a.href = "https://api.map.baidu.com/direction?origin=latlng:"+start["position"]["lat"]+","+start["position"]["lng"]+"|name:"+start["positionDetial"]+"&destination=latlng:"+end["position"]["lat"]+","+end["position"]["lng"]+"|name:"+end["positionDetial"]+"&mode=transit&region=广州&output=html&src=测试";
+				map.getContainer().appendChild(a);
+				return a;
+			}
+
+			walk.prototype.initialize = function(map){
+				var a = document.createElement("a");
+				a.appendChild(document.createTextNode("步行"));
+				a.classList.add("ctr");
+				a.href = "https://api.map.baidu.com/direction?origin=latlng:"+start["position"]["lat"]+","+start["position"]["lng"]+"|name:"+start["positionDetial"]+"&destination=latlng:"+end["position"]["lat"]+","+end["position"]["lng"]+"|name:"+end["positionDetial"]+"&mode=walking&region=广州&output=html&src=测试";
+				map.getContainer().appendChild(a);
+				return a;
+			}
+
+			// 创建控件
+			var myPisitionCtr = new myPisition(),
+				tagPisitionCtr = new tagPisition(),
+				drivCtr = new driv(),
+				busCtr = new bus(),
+				walkCtr = new walk();
+
+			// 添加到地图当中
+			map.addControl(myPisitionCtr);
+			map.addControl(tagPisitionCtr);
+			map.addControl(drivCtr),
+			map.addControl(busCtr),
+			map.addControl(walkCtr);
+		}
+	</script>
+</body>
+</html>
