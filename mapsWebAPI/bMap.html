@@ -74,7 +74,7 @@
 
 		//目的地
 		var end = {
-			"title": "目的地",
+			"title": "目的地：",
 			"position": {
 				"lng": "113.31821400036954",
 				"lat": "22.979820008361592"
@@ -103,7 +103,7 @@
 
 		//目的地窗口
 		var endWindow = initContentWindow(end["positionDetial"],end["title"]);
-		mkEnd.openInfoWindow(endWindow,end["position"]);//显示
+		// mkEnd.openInfoWindow(endWindow,end["position"]);//显示
 		mkEnd.addEventListener("click",function(){
 			this.openInfoWindow(endWindow,end["position"]);
 		});
