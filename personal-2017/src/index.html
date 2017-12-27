@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no,email=no">
+	<title>personal-H5</title>
+	<script>
+		window.onerror = function(errMsg,scriptURI,lineNumber,columnNumber,errorObj){
+			setTimeout(function(){
+				var rst = {
+					"错误信息：": errMsg,
+					"出错文件：": scriptURI,
+					"出错行号：": lineNumber,
+					"出错列号：": columnNumber,
+					"错误详情：": errorObj
+				}
+				alert(JSON.stringify(rst,null,10));
+			});
+		}
+	</script>
+	<script>
+		(function(win,doc){
+			function rem(){
+				//屏幕宽度/375*50 = font-size
+				doc.documentElement.style.fontSize=doc.documentElement.clientWidth/375*50+"px";
+				console.log("屏幕宽度："+doc.documentElement.clientWidth);
+				console.log("根字体大小："+doc.documentElement.style.fontSize);
+			}
+			rem();
+			win.addEventListener("resize",rem,false);
+		})(window,document);
+	</script>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div id="cover" class="cover">
+		<div id="persent"></div>
+	</div>
+	<div id="h5">
+		<!-- Swiper -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div id="tit1" class="center tit tit-ani">page-1</div>
+				</div>
+				<div class="swiper-slide">
+					<span id="jump-2" class="btn btn-ani">back to 1</span>
+				</div>
+				<div class="swiper-slide">
+					<div id="tit1" class="center tit tit-ani">page-2</div>
+				</div>
+				<div class="swiper-slide">
+					<div id="tit1" class="center tit tit-ani">page-3</div>
+				</div>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+	</div>
+
+	<script src="js/lib/swiper.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
