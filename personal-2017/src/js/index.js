@@ -1,16 +1,16 @@
-/*参数：
-*id:id 【string】【必填】
-*progress:进度 0-100 【number】【选填】
-*w:宽度 单位rem 【number】【选填】
-*h:高度 单位rem 【number】【选填】
-*inside:内圈颜色 【string】【选填】
-*outside:外圈颜色 【string】【选填】
-*fontColor:字体颜色 【string】【选填】
-*isAni:true/false 是否需要动画 【boolean】【必填】
-*dur:动画时长 单位秒 【number】【选填】
-*delay:动画延时 单位秒 【number】【选填】
+/**
+* @param {string} id:id 【必填】
+* @param {number} progress:进度 0-100 【选填】
+* @param {number} w:宽度 单位rem 【选填】
+* @param {number} h:高度 单位rem 【选填】
+* @param {string} inside:内圈颜色 【选填】
+* @param {string} outside:外圈颜色 【选填】
+* @param {string} fontColor:字体颜色 【选填】
+* @param {boolean} isAni:true/false 是否需要动画 【必填】
+* @param {number} dur:动画时长 单位秒 【选填】
+* @param {number} delay:动画延时 单位秒 【选填】
 */
-
+//圆形进度条
 var cc = function(id,options){
 	options = options || {};
 	options.progress = options.progress <= 100 ? options.progress : 100;
@@ -176,10 +176,11 @@ var cc = function(id,options){
 }
 
 /**
-* @param imgList 要加载的图片地址列表，['aa/asd.png','aa/xxx.png']
-* @param callback 每成功加载一个图片之后的回调，并传入“已加载的图片总数/要加载的图片总数”表示进度
-* @param timeout 每个图片加载的超时时间，默认为5s
+* @param {array} imgList 要加载的图片地址列表，['aa/asd.png','aa/xxx.png']
+* @param {function} callback 每成功加载一个图片之后的回调，并传入“已加载的图片总数/要加载的图片总数”表示进度
+* @param {number} timeout 每个图片加载的超时时间，默认为5s
 */
+//图片预加载
 var imgLoader = function (imgList, callback, timeout) {
 	
 	var isArray = function (obj) {
@@ -249,40 +250,149 @@ var fixedCenter = function(dom){
     dom.style.marginTop = -halfH + "PX";
 }
 
-//初始化h5
-var initH5 = function(){
-	var swiper = new Swiper('#h5 .swiper-container', {
-		direction: 'vertical',
-		pagination: {
-			el: '.swiper-pagination',
-			// clickable: true,
-			dynamicBullets: true
-		},
+//dom
+var oH5 = sel("#h5"),
+	oPage1Pic = sel("#page1Pic"),
+	oPage1Qrcode = sel("#page1Qrcode"),
+	aCenter = selAll(".center"),
+	oLogo = sel("#logo"),
+	oReturnTop = sel("#returnTop"),
+	aMsgBox = selAll(".page3-msg");
+
+//头像点击逻辑
+var rotatePic = function(str){
+	if(typeof str != "string") return;
+
+	if(str == "turn"){
+		console.log("turn");
+		oPage1Pic.classList.add("turn");
+		oPage1Pic.classList.remove("return");
+		oPage1Qrcode.classList.add("page1-qrcode-ani-in");
+		oPage1Qrcode.classList.remove("page1-qrcode-ani-out");
+		oPage1Qrcode.style.zIndex = "10004";
+	}
+	if(str == "return"){
+		console.log("return");
+		oPage1Pic.classList.add("return");
+		oPage1Pic.classList.remove("turn");
+		oPage1Qrcode.classList.add("page1-qrcode-ani-out");
+		oPage1Qrcode.classList.remove("page1-qrcode-ani-in");
+		// oPage1Qrcode.style.zIndex = "-1";//这个要在动画完结后再做
+	}
+	if(str == "reset"){
+		console.log("reset turn or return~");
+		oPage1Pic.classList.remove("turn");
+		oPage1Pic.classList.remove("return");
+		oPage1Qrcode.classList.remove("page1-qrcode-ani-in");
+		oPage1Qrcode.classList.remove("page1-qrcode-ani-out");
+		oPage1Qrcode.style.zIndex = "-1";
+	}
+	//动画完结后将二维码放回底部，免得手指长按可以识别到原本透明的二维码
+	oPage1Qrcode.addEventListener("webkitAnimationEnd",function(e){
+		// console.log(e.animationName);
+		if(e.animationName === "page4-contact-item-ani-out"){
+			oPage1Qrcode.style.zIndex = "-1";
+		}
+	},false);
+}
+
+//拿出page3内最高的msg，给所有msg设置一样的高度
+var getHeighestAndSet = function(){
+	var heightArr = [],
+		maxHeight = null;
+
+	//拿所有msg高度
+	for(var i=0; i<aMsgBox.length; i++){
+		var noPx = parseInt(getComputedStyle(aMsgBox[i], false)["height"].split("px")[0]);
+		// console.log(noPx);
+		heightArr.push(noPx);
+	}
+
+	//拿最高的
+	maxHeight = Math.max.apply(null, heightArr);
+
+	//给所有msg使用
+	for(var i=0; i<aMsgBox.length; i++){
+		aMsgBox[i].style.height = maxHeight + "px";
+	}
+}
+
+//初始化page3的swiper
+var initTimeLine = function(){
+	return new Swiper('#timeLineSwiper', {
+		direction: 'horizontal',
+		// pagination: {
+		// 	el: '.timeline-point',
+		// 	dynamicBullets: false
+		// },
+		// navigation: {
+		// 	prevEl: '.timeline-prev',
+		// 	nextEl: '.timeline-next'
+		// },
+		effect: 'flip',
 		on: {
 			init: function(){
-				console.log(this.activeIndex);
-				console.log("h5 is inited");
+				console.log("timeLine is inited，here is page",this.activeIndex + 1);
+				//设置page3-msg高度
+				getHeighestAndSet();
+			}
+		}
+	});
+}
+
+//初始化h5
+var initH5 = function(){
+	var fullPage = new Swiper('#h5Swiper', {
+		direction: 'vertical',
+		// pagination: {
+		// 	el: '.h5-point',
+		// 	dynamicBullets: true
+		// },
+		on: {
+			init: function(){
+				//初始化page3内的Swiper
+				initTimeLine();
+
+				console.log("h5 is inited，here is page",this.activeIndex + 1);
 
 				//添加负margin
-				selAll(".center").forEach(function(ele,index){
+				aCenter.forEach(function(ele,index){
 					fixedCenter(ele);
 				});
 
 				//禁用微信内下滑
-				sel("#h5").addEventListener("touchmove",function(ev){
+				oH5.addEventListener("touchmove",function(ev){
 					ev.preventDefault();
+				}, {passive: false});
+
+				//刷新页面
+				oLogo.addEventListener("click",function(){
+					window.location.reload();
 				},false);
 
+				//跳转到第几页
 				//swiper.slideTo(index, speed, runCallbacks);
-				sel("#jump-2").addEventListener("click",function(){
-					swiper.slideTo(0,500,true);
+				oReturnTop.addEventListener("click",function(ev){
+					fullPage.slideTo(0, 500);
 				},false);
-
-				//各种逻辑...
+				
+				//头像点击逻辑...
+				if(this.activeIndex === 0){
+					oPage1Pic.addEventListener("click",function(ev){
+						if(this.classList.contains("turn")){
+							rotatePic("return");
+						}else{
+							rotatePic("turn");
+						}
+					},false);
+				}
 			},
-			slideChangeTransitionEnd: function(){
-				console.log(this.activeIndex);
-				console.log("h5 is changed");
+			slideChangeTransitionEnd: function(e){
+				console.log("h5 is changed，here is page",this.activeIndex + 1);
+				//还原头像
+				if(this.activeIndex != 0){
+					rotatePic("reset");
+				}
 			}
 		}
 	});
@@ -290,20 +400,50 @@ var initH5 = function(){
 
 //真实进度-如果浏览器有过一次缓存后就没有进度指示
 //图片地址数组
-var imgList = ["../src/images/mobile_bg.jpg"];
+var imgList = [
+	//page1
+	"../src/images/mobile_bg.jpg",
+	"../src/images/head_pic.png",
+	"../src/images/head_pic_2.png",
+	"../src/images/qr_code.png",
+	"../src/images/scroll_tips.png",
+	//page2
+	"../src/images/html5_1.png",
+	"../src/images/javascript_2.png",
+	"../src/images/jquery_3.png",
+	"../src/images/nodejs_4.png",
+	"../src/images/vuejs_5.png",
+	"../src/images/react_6.png",
+	//page3
+	"../src/images/picture_arrow_left.png",
+	"../src/images/picture_arrow_right.png",
+	//page4
+	"../src/images/mobile.png",
+	"../src/images/wechat.png",
+	"../src/images/qq.png",
+	"../src/images/email.png",
+	"../src/images/home.png",
+	"../src/images/return.png"
+	//web side test
+	// "https://raw.githubusercontent.com/czjdrj/surge-test/master/images/%E6%88%AA%E5%9B%BE1.png",
+	// "https://raw.githubusercontent.com/czjdrj/surge-test/master/images/%E6%88%AA%E5%9B%BE2.png",
+	// "https://raw.githubusercontent.com/czjdrj/surge-test/master/images/%E6%88%AA%E5%9B%BE3.png",
+	// "https://raw.githubusercontent.com/chenyaoyi88/myapp-admin/master/src/assets/images/avantar1.jpg",
+	// "https://raw.githubusercontent.com/chenyaoyi88/myapp-admin/master/src/assets/images/avantar_default.png"
+];
 
-//imgLoader调用
+//展示加载图片的进度
 imgLoader(imgList,function(percentage){
-	console.log("图片加载进度：",percentage);
 	var percentT = percentage * 100;
+	console.log("图片加载进度：",percentT.toFixed(0) + "%");
 	
 	cc("persent",{
 		progress: parseInt(percentT),
 		w: 2,
 		h: 2,
-		inside: "#ccc",
-		outside: "#666",
-		fontColor: "#666",
+		inside: "#e9e9e9",
+		outside: "#333",
+		fontColor: "#333",
 		isAni: false,
 		dur: 0,
 		delay: 0
@@ -312,6 +452,5 @@ imgLoader(imgList,function(percentage){
 	if (percentage === 1){
 		sel("body").removeChild(sel("#cover"));
 		initH5();
-		//do something...
 	}
 });

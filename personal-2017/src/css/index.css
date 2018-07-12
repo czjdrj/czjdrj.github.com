@@ -74,30 +74,187 @@ strong{
     float:right;
 }
 /*idnex*/
+/* h5 */
 html,
 body,
 #h5,
 .cover,
-.swiper-container{
+#h5 .swiper-container{
 	width:100% !important;
 	height:100% !important;
 }
-.swiper-slide{
+#h5 .swiper-slide{
 	overflow:hidden !important;
 }
-.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{
+#h5 .swiper-pagination-bullets.swiper-pagination-bullets-dynamic{
 /*	width:10px !important;*/
 }
-.swiper-pagination-bullet{
+#h5 .swiper-pagination-bullet{
 /*	width:10px !important;
 	height:10px !important;
 	border-radius:10px !important;*/
 	background:#fff !important;
-	opacity:.8 !important;
+	opacity:.4 !important;
 }
-.swiper-pagination-bullet-active{
-	background:#096 !important;
+#h5 .swiper-pagination-bullet-active{
+	background:#fff !important;
 	opacity:1 !important;
+}
+/*  */
+/* timeline */
+#timeLine{
+  margin-top: 1.4rem;
+  opacity: 0;
+}
+#timeLine .swiper-container{
+	/* width:100% !important; */
+	/* height:100% !important; */
+}
+#timeLine .swiper-slide{
+  overflow:hidden !important;
+}
+/*前进、后退*/
+#timeLine .swiper-button-next,
+#timeLine .swiper-button-prev{
+  position:absolute;
+  left:0;
+  top:50%;
+  width:1.44rem;
+  height:1.45rem;
+  margin-top:-.725rem;
+  z-index:10006;
+  cursor:default;
+  background-color:rgba(0,0,0,0.4);
+  border-radius:50%;
+}
+#timeLine .swiper-button-prev,
+#timeLine .swiper-container-rtl .swiper-button-next{
+  background-image:url("../images/picture_arrow_left.png");
+  background-size:25% 40%;
+  background-position:75% 50%;
+  background-repeat:no-repeat;
+  left:0;
+  right:auto;
+  margin-left:-.72rem;
+}
+#timeLine .swiper-button-next,
+#timeLine .swiper-container-rtl .swiper-button-prev{
+  background-image:url('../images/picture_arrow_right.png');
+  background-size:25% 40%;
+  background-position:25% 50%;
+  background-repeat:no-repeat;
+  right:0;
+  left:auto;
+  margin-right:-.72rem;
+}
+.page3-msg{
+  
+  /* 有按钮情况下的宽度 */
+  /* width: calc(100% - 1.66rem);
+  margin-left: .73rem; */
+
+  /* 没有按钮情况下的宽度 */
+  width: calc(100% - .4rem);
+  margin-left: .1rem;
+
+  padding: .1rem;
+  background: rgba(0,0,0,.5);
+  border-radius: .1rem;
+}
+.page3-msg-tit{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+.page3-msg-tit span{
+  color: #fff;
+}
+.page3-msg-tit span:last-child{
+  margin-left: .2rem;
+}
+.page3-msg-num{
+  display: block;
+  font-size: 0.26rem;
+  font-weight: bold;
+  color: #fff;
+  width: 1rem;
+  height: 0.38rem;
+  /* background: rgba(0,150,100,1); */
+  background: rgba(153,204,153,1);
+  border: 2px solid rgba(0,0,0,0.5);
+  border-radius: .1rem;
+  text-align: center;
+  line-height: 0.38rem;
+  margin-right: .2rem;
+}
+.page3-msg p{
+  font-size: .26rem;
+  color: #fff;
+  padding: .04rem
+}
+.page3-slide-tips{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .1rem 0;
+}
+.page3-slide-tips span{
+  font-size: .24rem;
+  color: #fff;
+  padding: 0 .1rem;
+  opacity: 0;
+}
+.page3-slide-tips img{
+  width: .4rem;
+  height: .4rem;
+  opacity: 0;
+}
+.page3-slide-tips img.left{
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+.page3-slide-tips img.right{
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+}
+.page3-label-box{
+  width: calc(100% - .4rem);
+  margin: 0 .1rem 0 .1rem;
+  padding: 0 .1rem .4rem 0;
+  background: rgba(0,0,0,0.5);
+  border-radius: .1rem;
+  opacity: 0;
+}
+.page3-label-box p{
+  padding: .1rem;
+  font-size: .32rem;
+  color: #fff;
+  /* text-align: center; */
+  margin-left: .12rem;
+}
+.page3-labels{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.page3-labels span{
+  font-size: 0.26rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(153,204,153,1);
+  border: 2px solid rgba(0,0,0,0.5);
+  border-radius: .1rem;
+  line-height: 0.4rem;
+  padding: 0 .2rem;
+  margin: .06rem .2rem;
+}
+/*  */
+.center{
+	position:absolute;
+	left:50%;
+	top:50%;
 }
 .cover{
 	position:fixed;
@@ -106,7 +263,15 @@ body,
 	bottom:0;
 	right:0;
 	background:#fff;
-	z-index:9999;
+	z-index:100002;
+}
+.start-word{
+  font-size: .8rem;
+  font-weight: bold;
+  color: #333;
+  top: 62%;
+	-webkit-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
 }
 #persent{
 	left:50%;
@@ -118,50 +283,764 @@ body,
 	background:url(../images/mobile_bg.jpg);
 	background-size:100% 100%;
 }
-.center{
-	position:absolute;
-	left:50%;
-	top:50%;
+.logo{
+  position:absolute;
+  z-index:10000;
+  right:0;
+  top:0;
+  padding:0.2rem;
 }
-.tit{
-	top:20%;
+/* .logo a{
 	color:#fff;
-	font-size:.6rem;
+  font-size:.4rem;
+  font-weight:bold;
+  opacity:1;
+} */
+/* 裁剪矩形 */
+.logo a{
+	display:block;
+	width:1.92rem;
+	height:.52rem;
+	text-align:center;
+	line-height:.52rem;
+	font-size:.4rem;
+	font-weight:bold;
+	color:#fff;
+	position:relative;
+}
+.logo a::before,.logo a::after{
+	content:"";
+	position:absolute;
+	left:0;
+	top:0;
+	bottom:0;
+	right:0;
+	margin:-.04rem;
+	border:.04rem solid #9c9;
+  /* border-radius:.2rem; */
+  /* ios下要设置一个默认的裁剪样式，不然会失效 */
+  clip:rect(0rem,2.04rem,.04rem,0rem);
+  opacity:1;
+}
+.logo a::before{
+  animation:line1 4s linear infinite;
+	-webkit-animation:line1 4s linear infinite;
+	-moz-animation:line1 4s linear infinite;
+	-ms-animation:line1 4s linear infinite;
+}
+.logo a::after{
+  animation:line2 4s linear infinite;
+	-webkit-animation:line2 4s linear infinite;
+	-moz-animation:line2 4s linear infinite;
+	-ms-animation:line2 4s linear infinite;
+}
+/* logo裁剪矩形 参数：上 右 下 左 */
+@keyframes line1{
+  /* 上边 */
+  0%,100%{clip:rect(0rem,2.04rem,.04rem,0rem);opacity:1;}
+  /* 右边 */
+  25%{clip:rect(0rem,2.04rem,.6rem,2rem);opacity:0;}
+  /* 下边 */
+  50%{clip:rect(.56rem,2.04rem,.6rem,0rem);opacity:1;}
+  /* 左边 */
+	75%{clip:rect(0rem,.04rem,.6rem,0rem);opacity:0;}
+}
+@-webkit-keyframes line1{
+	0%,100%{clip:rect(0rem,2.04rem,.04rem,0rem);opacity:1;}
+	25%{clip:rect(0rem,2.04rem,.6rem,2rem);opacity:0;}
+	50%{clip:rect(.56rem,2.04rem,.6rem,0rem);opacity:1;}
+	75%{clip:rect(0rem,.04rem,.6rem,0rem);opacity:0;}
+}
+@keyframes line2{
+	0%,100%{clip:rect(.56rem,2.04rem,.6rem,0rem);opacity:1;}
+	25%{clip:rect(0rem,.04rem,.6rem,0rem);opacity:0;}
+	50%{clip:rect(0rem,2.04rem,.04rem,0rem);opacity:1;}
+	75%{clip:rect(0rem,2.04rem,.6rem,2rem);opacity:0;}
+}
+@-webkit-keyframes line2{
+	0%,100%{clip:rect(.56rem,2.04rem,.6rem,0rem);opacity:1;}
+	25%{clip:rect(0rem,.04rem,.6rem,0rem);opacity:0;}
+	50%{clip:rect(0rem,2.04rem,.04rem,0rem);opacity:1;}
+	75%{clip:rect(0rem,2.04rem,.6rem,2rem);opacity:0;}
+}
+/*  */
+.page1-tit{
+  position:absolute;
+  top:4%;
+  left:0;
+  padding:0.2rem;
+	color:#fff;
+  font-size:.36rem;
+  font-weight:bold;
 	opacity:0;
 }
-.btn{
-	position:absolute;
-	left:50%;
-	top:90%;
-	color:#fff;
-	font-size:.4rem;
-	width:2rem;
-	height:.8rem;
-	background:#096;
-	border-radius:10px;
-	text-align:center;
-	line-height:.81rem;
-	opacity:1;
-	-webkit-transform:translate(-50%,-50%);
-	transform:translate(-50%,-50%);
+.page1-pic{
+  width: 2.8rem;
+  height: 2.8rem;
+  position: absolute;
+  top: 24%;
+  z-index: 10000;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform: perspective(800px) translateY(-10rem);
+  -webkit-transform: perspective(800px) translateY(-10rem);
 }
-/*tit-ani*/
-@-webkit-keyframes tit-ani{
+.page1-pic img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 50%;
+}
+.page1-pic .up{
+  transform: translateZ(2px);
+  -webkit-transform: translateZ(2px);
+}
+.page1-pic .down{
+  transform: translateZ(-2px) scale(-1,1);
+  -webkit-transform: translateZ(-2px) scale(-1,1);
+}
+.page1-msg{
+  position: absolute;
+  top: 38%;
+  left:0;
+  width: calc(100% - .8rem);
+  padding: 0 .4rem;
+  background: rgba(0,0,0,.5);
+  opacity: 0;
+}
+.page1-msg p{
+  text-align: center;
+  font-size: .34rem;
+  color: #fff;
+  padding: .12rem 0;
+}
+.src-tips{
+  width: .5rem;
+  height: .5rem;
+  top: 96%;
+  z-index: 9999;
+  opacity: 0;
+}
+.page1-qrcode{
+  position: absolute;
+  left: 0;
+  top: 38.6%;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 4.88rem;
+  height: 4.88rem;
+  border: 2px solid #fff;
+  opacity: 0;
+  z-index: -1;
+}
+.page2-skills-list,
+.page4-contact-list{
+  position: absolute;
+  top: 12%;
+  left: 0;
+  height: 84%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.page2-skills-item{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  font-size: .26rem;
+  color: #fff;
+}
+.page2-skills-item div{
+  margin-top: .2rem;
+  padding: .1rem;
+  background: rgba(0,0,0,.5);
+  border-radius: .1rem;
+  opacity: 0;
+  text-align: center;
+}
+.page2-skills-img{
+  width: 2rem;
+  height: 2rem;
+  opacity: 0;
+}
+.page2-skills-Proficiency{
+  font-size: .28rem;
+  font-weight: bold;
+}
+.page2-skills-persent{
+  color: #9c9;
+  opacity: 1;
+}
+.page4-contact-list{
+  top: 14%;
+  width: 100%;
+  height: 66%;
+  flex-flow: column nowrap;
+}
+.page4-contact-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap;
+  opacity: 0;
+}
+.page4-contact-icon-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: rgba(0,0,0,.5);
+  border: 3px solid #9c9;
+  margin-right: .2rem;
+}
+.page4-contact-img{
+  width: .6rem;
+  height: .6rem;
+}
+.page4-contact-detail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 0;
+  height: .92rem;
+  background: rgba(0,0,0,.5);
+  border: 3px solid #9c9;
+  border-radius: .2rem;
+  opacity: 0;
+}
+.page4-contact-detail a,
+.page4-contact-detail span{
+  color: #fff;
+  font-size: .32rem;
+  font-weight: bold;
+}
+.page4-home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: .1rem;
+  background: rgba(0,0,0,.5);
+  border: 2px solid #9c9;
+  border-radius: .1rem;
+  top: 88%;
+  opacity: 0;
+}
+.page4-home span{
+  font-size: .28rem;
+  color: #fff;
+}
+.page4-home img{
+  width: .3rem;
+  height: .3rem;
+  margin: 0 .1rem;
+}
+
+/*哪个slider被激活，就执行哪个动画*/
+/*渐现*/
+#h5 .swiper-slide-active .fade-in{
+  -webkit-animation:fade-in .5s .5s ease forwards;
+  animation:fade-in .5s .5s ease forwards;
+}
+/*  */
+
+/*渐现2*/
+#h5 .swiper-slide-active .fade-in-opa{
+  -webkit-animation:fade-in-opa 1s 1s linear forwards;
+  animation:fade-in-opa 1s 1s linear forwards;
+}
+/*  */
+
+/*渐现3*/
+#h5 .swiper-slide-active .fade-in-opa-3{
+  -webkit-animation:fade-in-opa 1s 1.5s linear forwards;
+  animation:fade-in-opa 1s 1.5s linear forwards;
+}
+/*  */
+
+/*头像下落动画*/
+#h5 .swiper-slide-active .page1-pic-ani{
+  -webkit-animation: page1-pic-ani .6s 1s ease forwards;
+  animation: page1-pic-ani .6s 1s ease forwards;
+}
+/*  */
+
+/*说明文字下落动画*/
+#h5 .swiper-slide-active .page1-msg-ani{
+  -webkit-animation: page4-contact-item-ani .8s 1.3s ease forwards;
+  animation: page4-contact-item-ani .8s 1.3s ease forwards;
+}
+/*  */
+
+/*qrcode下落动画*/
+.page1-qrcode-ani-in{
+  -webkit-animation: page4-contact-item-ani .5s ease forwards;
+  animation: page4-contact-item-ani .5s ease forwards;
+}
+/*  */
+
+/*qrcode上升动画*/
+.page1-qrcode-ani-out{
+  -webkit-animation: page4-contact-item-ani-out .5s ease forwards;
+  animation: page4-contact-item-ani-out .5s ease forwards;
+}
+/*  */
+
+/*标题动画*/
+#h5 .swiper-slide-active .tit-ani{
+  -webkit-animation:tit-ani .5s .5s ease forwards;
+  animation:tit-ani .5s .5s ease forwards;
+}
+/*  */
+
+/* 滑动提示动画 */
+#h5 .swiper-slide-active .src-tips-ani{
+  -webkit-animation: tips 2s 1.8s linear infinite;
+  animation: tips 2s 1.8s linear infinite;
+}
+/*  */
+
+/* 滑动提示动画2 */
+#h5 .swiper-slide-active .src-tips-ani-2{
+  -webkit-animation: tips-2 2s 1s linear infinite;
+  animation: tips-2 2s 1s linear infinite;
+}
+/*  */
+
+/* 滑动提示动画3 */
+#h5 .swiper-slide-active .src-tips-ani-3{
+  -webkit-animation: tips-3 2s 1s linear infinite;
+  animation: tips-3 2s 1s linear infinite;
+}
+/*  */
+
+/* 滑动提示动画-文字 */
+#h5 .swiper-slide-active .src-tips-ani-font{
+  -webkit-animation: tips-font-opa 2s 1s linear infinite;
+  animation: tips-font-opa 2s 1s linear infinite;
+}
+/*  */
+
+/* skills动画-1-左进-1 */
+#h5 .swiper-slide-active .page2-skills-ani1-1{
+  -webkit-animation: page2-skills-ani1 .5s 1s ease forwards;
+  animation: page2-skills-ani1 .5s 1s ease forwards;
+}
+/*  */
+
+/* skills动画-1-左进-3 */
+#h5 .swiper-slide-active .page2-skills-ani1-3{
+  -webkit-animation: page2-skills-ani1 .5s 1.4s ease forwards;
+  animation: page2-skills-ani1 .5s 1.4s ease forwards;
+}
+/*  */
+
+/* skills动画-1-左进-5 */
+#h5 .swiper-slide-active .page2-skills-ani1-5{
+  -webkit-animation: page2-skills-ani1 .5s 1.8s ease forwards;
+  animation: page2-skills-ani1 .5s 1.8s ease forwards;
+}
+/*  */
+
+/* skills动画-3-右进-2 */
+#h5 .swiper-slide-active .page2-skills-ani3-2{
+  -webkit-animation: page2-skills-ani3 .5s 1.2s ease forwards;
+  animation: page2-skills-ani3 .5s 1.2s ease forwards;
+}
+/*  */
+
+/* skills动画-3-右进-4 */
+#h5 .swiper-slide-active .page2-skills-ani3-4{
+  -webkit-animation: page2-skills-ani3 .5s 1.6s ease forwards;
+  animation: page2-skills-ani3 .5s 1.6s ease forwards;
+}
+/*  */
+
+/* skills动画-3-右进-6 */
+#h5 .swiper-slide-active .page2-skills-ani3-6{
+  -webkit-animation: page2-skills-ani3 .5s 2s ease forwards;
+  animation: page2-skills-ani3 .5s 2s ease forwards;
+}
+/*  */
+
+/* skills动画-2-文字渐现-1 */
+#h5 .swiper-slide-active .page2-skills-ani2-1{
+  -webkit-animation: page2-skills-ani2 .5s 1.2s ease forwards;
+  animation: page2-skills-ani2 .5s 1.2s ease forwards;
+}
+/*  */
+
+/* skills动画-2-文字渐现-2 */
+#h5 .swiper-slide-active .page2-skills-ani2-2{
+  -webkit-animation: page2-skills-ani2 .5s 1.4s ease forwards;
+  animation: page2-skills-ani2 .5s 1.4s ease forwards;
+}
+/*  */
+
+/* skills动画-2-文字渐现-3 */
+#h5 .swiper-slide-active .page2-skills-ani2-3{
+  -webkit-animation: page2-skills-ani2 .5s 1.6s ease forwards;
+  animation: page2-skills-ani2 .5s 1.6s ease forwards;
+}
+/*  */
+
+/* skills动画-2-文字渐现-4 */
+#h5 .swiper-slide-active .page2-skills-ani2-4{
+  -webkit-animation: page2-skills-ani2 .5s 1.8s ease forwards;
+  animation: page2-skills-ani2 .5s 1.8s ease forwards;
+}
+/*  */
+
+/* skills动画-2-文字渐现-5 */
+#h5 .swiper-slide-active .page2-skills-ani2-5{
+  -webkit-animation: page2-skills-ani2 .5s 2.0s ease forwards;
+  animation: page2-skills-ani2 .5s 2.0s ease forwards;
+}
+/*  */
+
+/* skills动画-2-文字渐现-6 */
+#h5 .swiper-slide-active .page2-skills-ani2-6{
+  -webkit-animation: page2-skills-ani2 .5s 2.2s ease forwards;
+  animation: page2-skills-ani2 .5s 2.2s ease forwards;
+}
+/*  */
+
+/* 联系方式动画--下落-1 */
+#h5 .swiper-slide-active .page4-contact-item-ani-1{
+  -webkit-animation: page4-contact-item-ani .5s 1s ease forwards;
+  animation: page4-contact-item-ani .5s 1s ease forwards;
+}
+/*  */
+
+/* 联系方式动画--下落-2 */
+#h5 .swiper-slide-active .page4-contact-item-ani-2{
+  -webkit-animation: page4-contact-item-ani .5s 1.15s ease forwards;
+  animation: page4-contact-item-ani .5s 1.15s ease forwards;
+}
+/*  */
+
+/* 联系方式动画--下落-3 */
+#h5 .swiper-slide-active .page4-contact-item-ani-3{
+  -webkit-animation: page4-contact-item-ani .5s 1.3s ease forwards;
+  animation: page4-contact-item-ani .5s 1.3s ease forwards;
+}
+/*  */
+
+/* 联系方式动画--下落-4 */
+#h5 .swiper-slide-active .page4-contact-item-ani-4{
+  -webkit-animation: page4-contact-item-ani .5s 1.45s ease forwards;
+  animation: page4-contact-item-ani .5s 1.45s ease forwards;
+}
+/*  */
+
+/* 联系方式-号码-动画--展开-1 */
+#h5 .swiper-slide-active .page4-contact-detail-ani-1{
+  -webkit-animation: page4-contact-detail-ani .5s 1.5s ease forwards;
+  animation: page4-contact-detail-ani .5s 1.5s ease forwards;
+}
+/*  */
+
+/* 联系方式-号码-动画--展开-2 */
+#h5 .swiper-slide-active .page4-contact-detail-ani-2{
+  -webkit-animation: page4-contact-detail-ani .5s 1.65s ease forwards;
+  animation: page4-contact-detail-ani .5s 1.65s ease forwards;
+}
+/*  */
+
+/* 联系方式-号码-动画--展开-3 */
+#h5 .swiper-slide-active .page4-contact-detail-ani-3{
+  -webkit-animation: page4-contact-detail-ani .5s 1.8s ease forwards;
+  animation: page4-contact-detail-ani .5s 1.8s ease forwards;
+}
+/*  */
+
+/* 联系方式-号码-动画--展开-4 */
+#h5 .swiper-slide-active .page4-contact-detail-ani-4{
+  -webkit-animation: page4-contact-detail-ani .5s 1.95s ease forwards;
+  animation: page4-contact-detail-ani .5s 1.95s ease forwards;
+}
+/*  */
+
+/* 联系方式-回首页-动画 */
+#h5 .swiper-slide-active .page4-home-ani{
+  -webkit-animation: page4-home-ani 2s 2.5s linear forwards;
+  animation: page4-home-ani 2s 2.5s linear forwards;
+}
+/*  */
+
+/*渐现*/
+@-webkit-keyframes fade-in{
 	0%{
+    transform:scale(3,3);
 		-webkit-transform:scale(3,3);
 		opacity:0;
 	}
 	100%{
+    transform:scale(1,1);
 		-webkit-transform:scale(1,1);
 		opacity:1;
 	}
 }
-/*哪个slider被激活，就执行哪个动画*/
-.swiper-slide-active .tit-ani{
-	-webkit-animation:tit-ani .5s .5s ease forwards;
-}
+/*  */
 
-/*动画*/
+/*渐现2*/
+@-webkit-keyframes fade-in-opa{
+	0%{
+		opacity:0;
+	}
+	100%{
+		opacity:1;
+	}
+}
+/*  */
+
+/*头像下落动画*/
+@-webkit-keyframes page1-pic-ani{
+	0%{
+    transform:perspective(800px) translateY(-10rem);
+		-webkit-transform:perspective(800px) translateY(-10rem);
+	}
+	100%{
+    transform:perspective(800px) translateY(0);
+		-webkit-transform:perspective(800px) translateY(0);
+	}
+}
+/*  */
+
+/*标题动画*/
+@-webkit-keyframes tit-ani{
+	0%{
+    transform:translateX(7rem);
+		-webkit-transform:translateX(7rem);
+		opacity:0;
+  }
+  50%{
+    transform:translateX(-1rem);
+		-webkit-transform:translateX(-1rem);
+		opacity:.5;
+  }
+	100%{
+    transform:translateX(0rem);
+		-webkit-transform:translateX(0rem);
+		opacity:1;
+	}
+}
+/*  */
+
+/* 翻转动画 */
+@-webkit-keyframes turn{
+	0%{
+    transform:perspective(800px) rotateY(0deg);
+    -webkit-transform:perspective(800px) rotateY(0deg);
+  }
+	100%{
+    transform:perspective(800px) rotateY(180deg);
+    -webkit-transform:perspective(800px) rotateY(180deg);
+  }
+}
+#h5 .page1-pic.turn{
+  -webkit-animation:turn 0.6s ease forwards;
+  animation:turn 0.6s ease forwards;
+}
+@-webkit-keyframes return{
+	0%{
+    transform:perspective(800px) rotateY(180deg);
+    -webkit-transform:perspective(800px) rotateY(180deg);
+  }
+	100%{
+    transform:perspective(800px) rotateY(0deg);
+    -webkit-transform:perspective(800px) rotateY(0deg);
+  }
+}
+#h5 .page1-pic.return{
+  -webkit-animation:return 0.6s ease forwards;
+  animation:return 0.6s ease forwards;
+}
+/*  */
+
+/* 滑动提示动画 */
+@-webkit-keyframes tips{
+	0%{
+    opacity:0;
+    transform:translate(0,0);
+    -webkit-transform:translate(0,0);
+  }
+	50%{
+    opacity:0.5;
+    transform:translate(0,-0.15rem);
+    -webkit-transform:translate(0,-0.15rem);
+  }
+	100%{
+    opacity:0;
+    transform:translate(0,-0.3rem);
+    -webkit-transform:translate(0,-0.3rem);
+  }
+}
+/*  */
+
+/* 滑动提示动画2 */
+@-webkit-keyframes tips-2{
+	0%{
+    opacity:0;
+    transform:translate(0,0) rotate(-90deg);
+    -webkit-transform:translate(0,0) rotate(-90deg);
+  }
+	50%{
+    opacity:0.5;
+    transform:translate(-0.15rem,0) rotate(-90deg);
+    -webkit-transform:translate(-0.15rem,0) rotate(-90deg);
+  }
+	100%{
+    opacity:0;
+    transform:translate(-0.3rem,0) rotate(-90deg);
+    -webkit-transform:translate(-0.3rem,0) rotate(-90deg);
+  }
+}
+/*  */
+
+/* 滑动提示动画3 */
+@-webkit-keyframes tips-3{
+	0%{
+    opacity:0;
+    transform:translate(0,0) rotate(90deg);
+    -webkit-transform:translate(0,0) rotate(90deg);
+  }
+	50%{
+    opacity:0.5;
+    transform:translate(0.15rem,0) rotate(90deg);
+    -webkit-transform:translate(0.15rem,0) rotate(90deg);
+  }
+	100%{
+    opacity:0;
+    transform:translate(0.3rem,0) rotate(90deg);
+    -webkit-transform:translate(0.3rem,0) rotate(90deg);
+  }
+}
+/*  */
+
+/* 滑动提示动画-文字 */
+@-webkit-keyframes tips-font-opa{
+	0%{
+    opacity:0;
+  }
+	50%{
+    opacity:0.5;
+  }
+	100%{
+    opacity:0;
+  }
+}
+/*  */
+
+/* skills动画-1-左进 */
+@-webkit-keyframes page2-skills-ani1{
+	0%{
+    opacity:0;
+    transform:translateX(-4rem) rotateZ(-360deg);
+    -webkit-transform:translateX(-4rem) rotateZ(-360deg);
+  }
+	100%{
+    opacity:1;
+    transform:translateX(0) rotateZ(0deg);
+    -webkit-transform:translateX(0) rotateZ(0deg);
+  }
+}
+/*  */
+
+/* skills动画-3-右进 */
+@-webkit-keyframes page2-skills-ani3{
+	0%{
+    opacity:0;
+    transform:translateX(4rem) rotateZ(360deg);
+    -webkit-transform:translateX(4rem) rotateZ(360deg);
+  }
+	100%{
+    opacity:1;
+    transform:translateX(0) rotateZ(0deg);
+    -webkit-transform:translateX(0) rotateZ(0deg);
+  }
+}
+/*  */
+
+/* skills动画-2-文字渐现 */
+@-webkit-keyframes page2-skills-ani2{
+	0%{
+    opacity:0;
+    transform:scale(2,2);
+    -webkit-transform:scale(2,2);
+  }
+	100%{
+    opacity:1;
+    transform:scale(1,1);
+    -webkit-transform:scale(1,1);
+  }
+}
+/*  */
+
+/* 联系方式动画--下落 */
+@-webkit-keyframes page4-contact-item-ani{
+	0%{
+    opacity:0;
+    transform:translateY(-10rem);
+    -webkit-transform:translateY(-10rem);
+  }
+	100%{
+    opacity:1;
+    transform:translateY(0);
+    -webkit-transform:translateY(0);
+  }
+}
+/*  */
+
+/* 联系方式动画--上升 */
+@-webkit-keyframes page4-contact-item-ani-out{
+	0%{
+    opacity:1;
+    transform:translateY(0);
+    -webkit-transform:translateY(0);
+  }
+	100%{
+    opacity:0;
+    transform:translateY(-10rem);
+    -webkit-transform:translateY(-10rem);
+  }
+}
+/*  */
+
+/* 联系方式-号码-动画--展开 */
+@-webkit-keyframes page4-contact-detail-ani{
+	0%{
+    opacity:0;
+    width:0;
+  }
+	100%{
+    opacity:1;
+    width:3.85rem;
+  }
+}
+/*  */
+
+/* 联系方式-回首页-动画 */
+@-webkit-keyframes page4-home-ani{
+	0%{
+    opacity:0;
+  }
+	100%{
+    opacity:1;
+  }
+}
+/*  */
+
 @-webkit-keyframes zoomIn {
   0% {
     opacity: 0;

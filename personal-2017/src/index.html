@@ -4,59 +4,209 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
 	<meta name="format-detection" content="telephone=no,email=no">
-	<title>personal-2017</title>
+	<title>Puzzle</title>
 	<script>
-		window.onerror = function(errMsg,scriptURI,lineNumber,columnNumber,errorObj){
-			setTimeout(function(){
-				var rst = {
-					"错误信息：": errMsg,
-					"出错文件：": scriptURI,
-					"出错行号：": lineNumber,
-					"出错列号：": columnNumber,
-					"错误详情：": errorObj
-				}
-				alert(JSON.stringify(rst,null,10));
-			});
-		}
-	</script>
-	<script>
-		(function(win,doc){
+		(function(win, doc){
 			function rem(){
 				//屏幕宽度/375*50 = font-size
-				doc.documentElement.style.fontSize=doc.documentElement.clientWidth/375*50+"px";
-				console.log("屏幕宽度："+doc.documentElement.clientWidth);
-				console.log("根字体大小："+doc.documentElement.style.fontSize);
+				doc.documentElement.style.fontSize = doc.documentElement.clientWidth / 375 * 50 + "px";
+				console.log("屏幕宽度：" + doc.documentElement.clientWidth);
+				console.log("根字体大小：" + doc.documentElement.style.fontSize);
 			}
 			rem();
-			win.addEventListener("resize",rem,false);
+			win.addEventListener("resize", rem, false);
 		})(window,document);
 	</script>
 	<link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+<body ontouchstart>
+	<!-- 0% -->
 	<div id="cover" class="cover">
+		<div class="center start-word">Puzzle</div>
 		<div id="persent"></div>
+	</div>
+	<!-- logo -->
+	<div class="logo">
+		<a id="logo" href="javascript:;">Puzzle</a>
 	</div>
 	<div id="h5">
 		<!-- Swiper -->
-		<div class="swiper-container">
+		<div id="h5Swiper" class="swiper-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<div id="tit1" class="center tit tit-ani">page-1</div>
+					<div class="page1-tit tit-ani">个人简介</div>
+					<div id="page1Pic" class="center page1-pic page1-pic-ani">
+						<img class="up"  alt=""  src="./images/head_pic.png">
+						<img class="down"  alt=""  src="./images/head_pic_2.png">
+					</div>
+					<div class="page1-msg page1-msg-ani">
+						<p>哈喽，我叫程梓杰</p>
+						<p>是一枚安静的程序猿</p>
+						<p>毕业于广州大学华软软件学院</p>
+						<p>具备2年+web前端开发经验</p>
+						<p>目前是在职码农</p>
+						<p>如果我幸运的达到了你们的用人要求</p>
+						<p>可以戳我头像联系我哦</p>
+						<!-- <p>感悟:安静和专注是码农需要具备的重要属性!</p> -->
+					</div>
+					<!-- qrcode -->
+					<img id="page1Qrcode" src="./images/qr_code.png" alt="" class="page1-qrcode">
+					<img src="./images/scroll_tips.png" alt="" class="center src-tips src-tips-ani">
 				</div>
 				<div class="swiper-slide">
-					<span id="jump-2" class="btn btn-ani">back to 1</span>
+					<div class="page1-tit tit-ani">专业技能</div>
+					<div class="page2-skills-list">
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani1-1" src="./images/html5_1.png" alt="">
+							<div class="page2-skills-ani2-1">
+								<p>HTML5+CSS3</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">90%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani3-2" src="./images/javascript_2.png" alt="">
+							<div class="page2-skills-ani2-2">
+								<p>JavaScript</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">80%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani1-3" src="./images/jquery_3.png" alt="">
+							<div class="page2-skills-ani2-3">
+								<p>JQuery</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">80%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani3-4" src="./images/nodejs_4.png" alt="">
+							<div class="page2-skills-ani2-4">
+								<p>NodeJs</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">30%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani1-5" src="./images/vuejs_5.png" alt="">
+							<div class="page2-skills-ani2-5">
+								<p>Vue</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">70%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani3-6" src="./images/react_6.png" alt="">
+							<div class="page2-skills-ani2-6">
+								<p>React</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">20%</span></p>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="swiper-slide">
-					<div id="tit1" class="center tit tit-ani">page-2</div>
+					<div class="page1-tit tit-ani">工作经历</div>
+					<div id="timeLine" class="fade-in-opa">
+						<div id="timeLineSwiper" class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="page3-msg">
+										<div class="page3-msg-tit">
+											<span class="page3-msg-num">1</span>
+											<span>广州车享客网络科技有限公司</span>
+											<span>2016/12--至今</span>
+										</div>
+										<p>1、参与“快快优车”APP内的混合页面开发，保持良好的android、IOS兼容性。</p>
+										<p>2、参与“销客”APP项目的开发，该项目意为门店销售人员提供移动进件功能，采用100%H5页面套APP壳的方式开发。技术选型：Vue.js</p>
+										<p>3、负责“快快找车”小程序开发，该项目为平行进口车客户和商家之间的撮合平台。技术选型：微信小程序</p>
+										<p>4、负责节假日移动端活动专题的H5页面开发。技术选型：Zepto.js</p>
+										<p>5、参与车贷SAAS后台“千诚”和“创昆”的前端模板页面开发，配合后台实现常见的进件、审核功能。技术选型：Require.js + JQuery.js</p>
+										<p>6、负责“快快优车”品牌升级第一、二版的移动端官网开发（首页、新车、二手车、进口车、车贷产品、个人中心、新闻中心、帮助中心等）。技术选型：Zepto.js</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="page3-msg">
+										<div class="page3-msg-tit">
+											<span class="page3-msg-num">2</span>
+											<span>广州四九游网络科技有限公司</span>
+											<span>2015/6--2016/10</span>
+										</div>
+										<p>1、负责游戏产品（屠龙之刃、梦幻三国等）PC官网页面、后台配置页面的模板开发。技术选型：JQuery.js</p>
+										<p>2、负责游戏产品的移动端运营活动H5页面开发，通过前后端分离的开发模式，实现和数据接口的交互。,技术选型：Zepto.js</p>
+										<p>3、各种常见视觉稿的实现，保证良好的浏览器和客户端的兼容性。</p>
+										<p>4、编写自用开发文档。</p>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="swiper-pagination timeline-point"></div> -->
+							<!-- <div class="swiper-button-prev timeline-prev"></div>
+							<div class="swiper-button-next timeline-next"></div> -->
+						</div>
+					</div>
+					<div class="page3-slide-tips">
+						<img class="left src-tips-ani-2" src="./images/scroll_tips.png" alt="">
+						<span class="src-tips-ani-font">左右滑动</span>
+						<img class="right src-tips-ani-3" src="./images/scroll_tips.png" alt="">
+					</div>
+					<div class="page3-label-box fade-in-opa-3">
+						<p>技能标签</p>
+						<div class="page3-labels">
+							<span>html5</span>
+							<span>css3</span>
+							<span>javaScript</span>
+							<span>vuejs</span>
+							<span>混合开发</span>
+							<span>前后端分离</span>
+							<span>单页面应用</span>
+							<span>微信小程序</span>
+							<span>nodejs</span>
+							<span>模块化开发</span>
+							<span>自动化流程工具</span>
+						</div>
+					</div>
 				</div>
 				<div class="swiper-slide">
-					<div id="tit1" class="center tit tit-ani">page-3</div>
+					<div class="page1-tit tit-ani">联系方式</div>
+					<div class="page4-contact-list">
+						<div class="page4-contact-item page4-contact-item-ani-4">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="./images/mobile.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-4">
+								<a href="tel:13570949332">13570949332</a>
+							</div>
+						</div>
+						<div class="page4-contact-item page4-contact-item-ani-3">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="./images/wechat.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-3">
+								<span>C13570949332</span>
+							</div>
+						</div>
+						<div class="page4-contact-item page4-contact-item-ani-2">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="./images/qq.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-2">
+								<span>381835346</span>
+							</div>
+						</div>
+						<div class="page4-contact-item page4-contact-item-ani-1">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="./images/email.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-1">
+								<span>czjdrj@163.com</span>
+							</div>
+						</div>
+					</div>
+					<div id="returnTop" class="center page4-home page4-home-ani">
+						<img class="page4-icon-home" src="./images/home.png" alt="">
+						<span>首页</span>
+						<img class="page4-icon-return" src="./images/return.png" alt="">
+					</div>
 				</div>
 			</div>
 			<!-- Add Pagination -->
-			<div class="swiper-pagination"></div>
+			<!-- <div class="swiper-pagination h5-point"></div> -->
 		</div>
 	</div>
 
