@@ -180,19 +180,6 @@ var initH5 = function(){
 	});
 }
 
-//优先展示进度条
-cc("persent",{
-	progress: 0,
-	w: 2,
-	h: 2,
-	inside: "#e9e9e9",
-	outside: "#333",
-	fontColor: "#333",
-	isAni: false,
-	dur: 0,
-	delay: 0
-});
-
 //展示加载图片的进度
 imgLoader(imgList,function(percentage){
 	var percentT = percentage * 100;
