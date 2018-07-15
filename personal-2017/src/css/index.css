@@ -167,6 +167,9 @@ body,
   align-items: center;
   flex-flow: row nowrap;
 }
+.page3-msg-tit-bold{
+  font-weight: bold;
+}
 .page3-msg-tit span{
   color: #fff;
 }
