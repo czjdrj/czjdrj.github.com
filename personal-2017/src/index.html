@@ -5,20 +5,10 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
 	<meta name="format-detection" content="telephone=no,email=no">
 	<title>Puzzle</title>
-	<script>
-		(function(win, doc){
-			function rem(){
-				//屏幕宽度/375*50 = font-size
-				doc.documentElement.style.fontSize = doc.documentElement.clientWidth / 375 * 50 + "px";
-				console.log("屏幕宽度：" + doc.documentElement.clientWidth);
-				console.log("根字体大小：" + doc.documentElement.style.fontSize);
-			}
-			rem();
-			win.addEventListener("resize", rem, false);
-		})(window,document);
-	</script>
+	<script src="./js/rem.js"></script>
 	<script src="./js/cc.js"></script>
 	<script src="./js/imgLoder.js"></script>
+
 	<link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/index.css">
 </head>
