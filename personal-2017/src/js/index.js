@@ -185,20 +185,22 @@ imgLoader(imgList,function(percentage){
 	var percentT = percentage * 100;
 	console.log("图片加载进度：",percentT.toFixed(0) + "%");
 
-	cc("persent",{
-		progress: parseInt(percentT),
-		w: 2,
-		h: 2,
-		inside: "#e9e9e9",
-		outside: "#333",
-		fontColor: "#333",
-		isAni: false,
-		dur: 0,
-		delay: 0
-	});
+	document.querySelector("#persent").textContent = percentT.toFixed(0) + "%";
+
+	// cc("persent",{
+	// 	progress: parseInt(percentT),
+	// 	w: 2,
+	// 	h: 2,
+	// 	inside: "#e9e9e9",
+	// 	outside: "#333",
+	// 	fontColor: "#333",
+	// 	isAni: false,
+	// 	dur: 0,
+	// 	delay: 0
+	// });
 
 	if (percentage === 1){
-		sel("body").removeChild(sel("#cover"));
-		initH5();
+		// sel("body").removeChild(sel("#cover"));
+		// initH5();
 	}
 });
