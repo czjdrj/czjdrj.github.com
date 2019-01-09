@@ -44,28 +44,28 @@ var imgLoader = function (imgList, callback, timeout) {
 //图片地址数组
 var imgList = [
     //page1
-    "../src/images/mobile_bg.jpg",
-    "../src/images/head_pic.png",
-    "../src/images/head_pic_2.png",
-    "../src/images/qr_code.png",
-    "../src/images/scroll_tips.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/mobile_bg.jpg",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/head_pic.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/head_pic_2.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/qr_code.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/scroll_tips.png",
     //page2
-    "../src/images/html5_1.png",
-    "../src/images/javascript_2.png",
-    "../src/images/jquery_3.png",
-    "../src/images/nodejs_4.png",
-    "../src/images/vuejs_5.png",
-    "../src/images/react_6.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/html5_1.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/javascript_2.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/jquery_3.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/nodejs_4.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/vuejs_5.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/react_6.png",
     //page3
-    "../src/images/picture_arrow_left.png",
-    "../src/images/picture_arrow_right.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/picture_arrow_left.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/picture_arrow_right.png",
     //page4
-    "../src/images/mobile.png",
-    "../src/images/wechat.png",
-    "../src/images/qq.png",
-    "../src/images/email.png",
-    "../src/images/home.png",
-    "../src/images/return.png"
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/mobile.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/wechat.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/qq.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/email.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/home.png",
+    "https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/return.png"
     //web side test
     // "https://raw.githubusercontent.com/czjdrj/surge-test/master/images/%E6%88%AA%E5%9B%BE1.png",
     // "https://raw.githubusercontent.com/czjdrj/surge-test/master/images/%E6%88%AA%E5%9B%BE2.png",
