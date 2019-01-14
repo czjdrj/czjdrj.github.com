@@ -202,7 +202,9 @@ imgLoader(imgList,function(percentage){
 	});
 
 	if (percentage === 1){
-		sel("body").removeChild(sel("#cover"));
-		initH5();
+		setTimeout(function(){
+			sel("body").removeChild(sel("#cover"));
+			initH5();
+		}, 200);
 	}
 });
