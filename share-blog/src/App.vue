@@ -45,8 +45,6 @@ img{
 body{
   font: 14px/1.6 Arial,"Microsoft YaHei","黑体","宋体",sans-serif;
   color: #333;
-  /*  */
-  padding: 0 !important;
 }
 html,body{
   padding: 0 !important;
@@ -90,8 +88,8 @@ textarea{
     padding: 0 10px 0 10px;
   }
   .el-message-box{
-    padding: 10px;
-    width: calc(100% - 20px);
+    padding: 10px !important;
+    width: calc(100% - 100px) !important;
   }
 }
 </style>
