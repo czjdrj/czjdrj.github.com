@@ -148,7 +148,8 @@ body,
   margin-right:-.72rem;
 }
 .page3-msg{
-  
+  height: 10rem;
+
   /* 有按钮情况下的宽度 */
   /* width: calc(100% - 1.66rem);
   margin-left: .73rem; */
@@ -168,7 +169,8 @@ body,
   flex-flow: row nowrap;
 }
 .page3-msg-tit-bold{
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: .26rem;
 }
 .page3-msg-tit span{
   color: #fff;
@@ -194,7 +196,7 @@ body,
 .page3-msg p{
   font-size: .26rem;
   color: #fff;
-  padding: .04rem
+  margin-top: .24rem;
 }
 .page3-slide-tips{
   display: flex;
@@ -482,6 +484,47 @@ body,
   color: #9c9;
   opacity: 1;
 }
+/* 新增的第2+页 */
+.page2-plus-label-box{
+  margin-top: 1.6rem;
+  padding: .1rem 0;
+  width: 7.1rem;
+  margin-left: .2rem;
+  background: rgba(0,0,0,0.5);
+  border-radius: .1rem;
+  opacity: 0;
+}
+.page2-plus-label-box > div{
+  opacity: 0;
+}
+.page2-plus-label-box p{
+  padding: .1rem;
+  font-size: .3rem;
+  color: #fff;
+  margin-left: .14rem;
+  font-weight: bold;
+}
+.page2-plus-labels{
+    /* padding: .1rem 0; */
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+.page2-plus-labels span{
+  display: inline-block;
+  font-size: 0.26rem;
+  color: #fff;
+  background: rgba(153,204,153,1);
+  border: 2px solid rgba(0,0,0,0.5);
+  border-radius: .1rem;
+  line-height: 0.4rem;
+  padding: .1rem .2rem;
+  margin: .1rem .2rem;
+}
+/*  */
 .page4-contact-list{
   top: 14%;
   width: 100%;
@@ -551,6 +594,36 @@ body,
 }
 
 /*哪个slider被激活，就执行哪个动画*/
+/* page2的技能标签框体马上展示 */
+#h5 .swiper-slide-active .opa-right-now{
+  -webkit-animation:fade-in-opa 0s 1s ease forwards;
+  animation:fade-in-opa 0s 1s ease forwards;
+}
+
+/* page2的技能标签渐现-1 */
+#h5 .swiper-slide-active .page2-plus-label-wrap-ani-1{
+  -webkit-animation: page2-skills-ani2 .5s 1s ease-in forwards;
+  animation: page2-skills-ani2 .5s 1s ease-in forwards;
+}
+
+/* page2的技能标签渐现-2 */
+#h5 .swiper-slide-active .page2-plus-label-wrap-ani-2{
+  -webkit-animation: page2-skills-ani2 .5s 1.2s ease-in forwards;
+  animation: page2-skills-ani2 .5s 1.2s ease-in forwards;
+}
+
+/* page2的技能标签渐现-3 */
+#h5 .swiper-slide-active .page2-plus-label-wrap-ani-3{
+  -webkit-animation: page2-skills-ani2 .5s 1.4s ease-in forwards;
+  animation: page2-skills-ani2 .5s 1.4s ease-in forwards;
+}
+
+/* page2的技能标签渐现-4 */
+#h5 .swiper-slide-active .page2-plus-label-wrap-ani-4{
+  -webkit-animation: page2-skills-ani2 .5s 1.6s ease-in forwards;
+  animation: page2-skills-ani2 .5s 1.6s ease-in forwards;
+}
+
 /*渐现*/
 #h5 .swiper-slide-active .fade-in{
   -webkit-animation:fade-in .5s .5s ease forwards;

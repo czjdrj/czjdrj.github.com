@@ -116,7 +116,7 @@ var initTimeLine = function(){
 			init: function(){
 				console.log("timeLine is inited，here is page",this.activeIndex + 1);
 				//设置page3-msg高度
-				getHeighestAndSet();
+				// getHeighestAndSet();
 			}
 		}
 	});
