@@ -1,0 +1,72 @@
+/**
+ * markdown转html后的样式
+ */
+
+.article h1 {
+  margin: 0 0 1em;
+  word-break: break-all;
+}
+
+.article h2 {
+  margin: 45px 0 0.8em;
+  padding-bottom: 0.7em;
+  border-bottom: 1px solid #ddd;
+  word-break: break-all;
+}
+
+.article h3 {
+  margin: 52px 0 1.2em;
+  word-break: break-all;
+}
+
+.article figure,
+.article p,
+.article ul,
+.article ol {
+  margin: 1.2em 0;
+  word-break: break-all;
+}
+
+.article p,
+.article ul,
+.article ol {
+  line-height: 1.6em;
+  word-break: break-all;
+}
+
+.article ul,
+.article ol {
+  padding-left: 1.5em;
+  word-break: break-all;
+}
+
+.article a {
+  color: #42b983;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.article blockquote {
+  margin: 2em 0;
+  padding-left: 20px;
+  border-left: 4px solid #42b983;
+  word-break: break-all;
+}
+
+.article blockquote p {
+  font-weight: 600;
+  margin-left: 0;
+  word-break: break-all;
+}
+
+.article iframe {
+  margin: 1em 0;
+  word-break: break-all;
+}
+
+.article pre{
+  width: 100%;
+  overflow-x: auto; 
+  background: #ededed;
+  /* word-break: break-all; */
+}
