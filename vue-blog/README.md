@@ -1,3 +1,5 @@
+https://czjdrj.github.io/vue-blog/dist/index.html
+
 # vue-blog
 
 > A Vue.js project
