@@ -1,5 +1,8 @@
 https://czjdrj.github.io/vue-blog/dist/index.html
 
+![pic](https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/online_qrcode/vue-blog.png)
+
+
 # vue-blog
 
 > A Vue.js project
