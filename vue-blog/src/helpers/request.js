@@ -22,9 +22,9 @@ export default function request(url, type = 'GET', data = {}) {
             option.data = data;
         }
 
-        MessageBox.alert(axios.defaults.baseURL, 'baseURL', {
-            confirmButtonText: '确定',
-        });
+        // MessageBox.alert(axios.defaults.baseURL, 'baseURL', {
+        //     confirmButtonText: '确定',
+        // });
 
         axios(option).then((res) => {
             if (res.data.status === 'ok') {
