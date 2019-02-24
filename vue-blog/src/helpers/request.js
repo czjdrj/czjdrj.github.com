@@ -3,7 +3,7 @@
  */
 
 import axios from 'axios';
-import { Message } from 'element-ui';
+import { Message, MessageBox } from 'element-ui';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.baseURL = 'https://blog-server.hunger-valley.com';
@@ -21,6 +21,10 @@ export default function request(url, type = 'GET', data = {}) {
         } else {
             option.data = data;
         }
+
+        MessageBox.alert(axios.defaults.baseURL, 'baseURL', {
+            confirmButtonText: '确定',
+        });
 
         axios(option).then((res) => {
             if (res.data.status === 'ok') {
