@@ -202,7 +202,12 @@ body,
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  width: 100%;
   padding: .1rem 0;
+  top: 88%;
+  left: 0;
+  z-index: 1001;
 }
 .page3-slide-tips span{
   font-size: .24rem;
