@@ -70,3 +70,7 @@
   background: #ededed;
   /* word-break: break-all; */
 }
+
+.article img{
+  width: 100%;
+}
