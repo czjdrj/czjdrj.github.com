@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no,email=no">
+	<title>Puzzle</title>
+	<script src="./js/rem.js"></script>
+	<script src="./js/cc.js"></script>
+	<script src="./js/imgLoder.js"></script>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body ontouchstart>
+	<!-- 0% -->
+	<div id="cover" class="cover">
+		<div class="center start-word">Puzzle</div>
+		<div id="persent" class="center"></div>
+	</div>
+	<script>
+		cc("persent", {
+			progress: 0,
+			w: 2,
+			h: 2,
+			inside: "#e9e9e9",
+			outside: "#333",
+			fontColor: "#333",
+			isAni: false,
+			dur: 0,
+			delay: 0
+		});
+	</script>
+	<!-- logo -->
+	<div class="logo">
+		<a id="logo" href="javascript:;">Puzzle</a>
+	</div>
+	<div id="h5">
+		<!-- Swiper -->
+		<div id="h5Swiper" class="swiper-container">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide">
+					<div class="page1-tit tit-ani">个人简介</div>
+					<div id="page1Pic" class="center page1-pic page1-pic-ani">
+						<img class="up"  alt=""  src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/head_pic.png">
+						<img class="down"  alt=""  src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/head_pic_2.png">
+					</div>
+					<div class="page1-msg page1-msg-ani">
+						<p>hello，我叫程梓杰</p>
+						<p>是一个安静的程序猿</p>
+						<p>毕业于广州大学华软软件学院</p>
+						<p>具备4年的web前端开发经验</p>
+						<p>目前是奋斗在一线的web前端开发工程师</p>
+						<p>如果我幸运的达到了你们的用人要求</p>
+						<p>可以戳我头像联系我</p>
+						<!-- <p>感悟:安静和专注是码农需要具备的重要属性!</p> -->
+					</div>
+					<!-- qrcode -->
+					<img id="page1Qrcode" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/qr_code.png" alt="" class="page1-qrcode">
+					<img src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/scroll_tips.png" alt="" class="center src-tips src-tips-ani">
+				</div>
+
+				<div class="swiper-slide">
+					<div class="page1-tit tit-ani">专业技能</div>
+					<div class="page2-skills-list">
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani1-1" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/html5_1.png" alt="">
+							<div class="page2-skills-ani2-1">
+								<p>HTML5+CSS3</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">90%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani3-2" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/javascript_2.png" alt="">
+							<div class="page2-skills-ani2-2">
+								<p>JavaScript</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">80%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani1-3" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/jquery_3.png" alt="">
+							<div class="page2-skills-ani2-3">
+								<p>JQuery</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">80%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani3-4" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/nodejs_4.png" alt="">
+							<div class="page2-skills-ani2-4">
+								<p>NodeJs</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">30%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani1-5" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/vuejs_5.png" alt="">
+							<div class="page2-skills-ani2-5">
+								<p>Vue</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">80%</span></p>
+							</div>
+						</div>
+						<div class="page2-skills-item">
+							<img class="page2-skills-img page2-skills-ani3-6" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/react_6.png" alt="">
+							<div class="page2-skills-ani2-6">
+								<p>React</p>
+								<p class="page2-skills-Proficiency">熟练度：<span class="page2-skills-persent">20%</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="page1-tit tit-ani">技能标签</div>
+					<div class="page2-plus-label-box opa-right-now">
+						<div class="page2-plus-label-wrap-ani-1">
+							<p>· html</p>
+							<div class="page2-plus-labels">
+								<span>html5</span>
+							</div>
+						</div>
+						<div class="page2-plus-label-wrap-ani-2">
+							<p>· css</p>
+							<div class="page2-plus-labels">
+								<span>css3</span>
+								<span>flex布局</span>
+								<span>响应式布局</span>
+							</div>
+						</div>
+						<div class="page2-plus-label-wrap-ani-3">
+							<p>· javascript</p>
+							<div class="page2-plus-labels">
+								<span>ES5 / ES6</span>
+								<span>模块化开发</span>
+								<span>面向对象</span>
+								<span>MVC / MVVM</span>
+								<span>ajax / jsonp</span>
+								<span>Vue</span>
+								<span>单页面应用</span>
+								<span>typescript</span>
+							</div>
+						</div>
+						<div class="page2-plus-label-wrap-ani-4">
+							<p>· 其他</p>
+							<div class="page2-plus-labels">
+								<span>微信小程序</span>
+								<span>混合开发</span>
+								<span>前后端分离</span>
+								<span>nodejs</span>
+								<span>Gulp</span>
+								<span>Webpack</span>
+								<span>Parcel</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="page1-tit tit-ani">工作经历</div>
+					<div id="timeLine" class="fade-in-opa">
+						<div id="timeLineSwiper" class="swiper-container">
+							<div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <div class="page3-msg">
+                                        <div class="page3-msg-tit">
+                                            <span class="page3-msg-num">1</span>
+                                            <span class="page3-msg-tit-bold">广东盟讯科技有限公司</span>
+                                            <span>2019/04--至今</span>
+                                        </div>
+                                        <p>1、负责tnaot-3.0APP版本更新的H5页面开发，包括“房地产”，“商家”，“便民”等模块的开发。技术选型：Vue.js（全家桶）</p>
+                                        <p>2、负责tnaot-3.0APP内“阅读时长有奖”、“评论抽奖”等运营活动的开发。技术选型：Vue.js（全家桶）</p>
+                                        <p>3、协助app端同事进行混合页面开发。</p>
+                                    </div>
+                                </div>
+
+								<div class="swiper-slide">
+									<div class="page3-msg">
+										<div class="page3-msg-tit">
+											<span class="page3-msg-num">2</span>
+											<span class="page3-msg-tit-bold">广州车享客网络科技有限公司</span>
+											<span>2016/12--2019/02</span>
+										</div>
+										<p>1、负责“车享会”APP项目的开发，该项目为小型会员商城，采用H5页面套APP壳的方式开发。技术选型：Vue.js</p>
+										<p>2、参与“销客”APP项目的开发，该项目意为门店销售人员提供移动端进件功能，采用H5页面套APP壳的方式开发。技术选型：Vue.js</p>
+										<p>3、参与车贷SAAS后台“千诚”和“创昆”的前端页面开发，配合后台接口实现常见的进件、审核功能。技术选型：Vue.js + Element-UI</p>
+										<p>4、负责“快快找车”小程序开发，该项目为平行进口车客户和商家之间的撮合平台。技术选型：微信小程序</p>
+										<p>5、负责“快快优车”品牌升级的官网开发。技术选型：jQuery.js</p>
+										<p>6、负责节假日移动端活动专题的H5页面开发。</p>
+										<p>7、参与“快快优车”APP内的混合页面开发。</p>
+									</div>
+                                </div>
+                                
+								<div class="swiper-slide">
+									<div class="page3-msg">
+										<div class="page3-msg-tit">
+											<span class="page3-msg-num">3</span>
+											<span class="page3-msg-tit-bold">广州四九游网络科技有限公司</span>
+											<span>2015/12--2016/11</span>
+										</div>
+										<p>1、负责游戏产品PC官网页面、后台配置页面的模板开发。技术选型：jQuery.js</p>
+										<p>2、负责游戏产品的移动端运营活动H5页面开发，通过前后端分离的开发模式，实现和数据接口的交互。技术选型：zepto.js</p>
+										<p>3、各种常见视觉稿的实现，保证良好的浏览器和客户端的兼容性。</p>
+										<p>4、编写开发文档。</p>
+									</div>
+                                </div>
+                                
+                                <div class="swiper-slide">
+                                    <div class="page3-msg">
+                                        <div class="page3-msg-tit">
+                                            <span class="page3-msg-num">4</span>
+                                            <span class="page3-msg-tit-bold">广州摩信网络科技有限公司</span>
+                                            <span>2015/01--2015/11</span>
+                                        </div>
+                                        <p>1、参与公司官网部分静态页面模块的开发，主要负责公司产品介绍、表单提交页的开发。技术选型：jQuery.js</p>
+                                        <p>2、参与“摩信”资讯管理后台进件模块，列表模块的开发，前端开发静态模板，后端进行数据渲染。技术选型：jQuery+less+gulp</p>
+                                        <p>3、参与“摩信”资讯管理后台的移动端H5版本开发，此版本为PC端简化版，单独抽离进件模块，以便移动端使用。技术选型：zepto.js</p>
+                                        <p>4、负责类"一元夺宝"，“留言有奖”等H5运营活动的开发。</p>
+                                    </div>
+                                </div>
+
+							</div>
+							<!-- <div class="swiper-pagination timeline-point"></div> -->
+							<!-- <div class="swiper-button-prev timeline-prev"></div>
+							<div class="swiper-button-next timeline-next"></div> -->
+						</div>
+					</div>
+					<div class="page3-slide-tips">
+						<img class="left src-tips-ani-2" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/scroll_tips.png" alt="">
+						<span class="src-tips-ani-font">左右滑动</span>
+						<img class="right src-tips-ani-3" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/scroll_tips.png" alt="">
+					</div>
+				</div>
+
+				<div class="swiper-slide">
+					<div class="page1-tit tit-ani">联系方式</div>
+					<div class="page4-contact-list">
+						<div class="page4-contact-item page4-contact-item-ani-4">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/mobile.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-4">
+								<a href="tel:13570949332">13570949332</a>
+							</div>
+						</div>
+						<div class="page4-contact-item page4-contact-item-ani-3">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/wechat.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-3">
+								<span>C13570949332</span>
+							</div>
+						</div>
+						<div class="page4-contact-item page4-contact-item-ani-2">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/qq.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-2">
+								<span>381835346</span>
+							</div>
+						</div>
+						<div class="page4-contact-item page4-contact-item-ani-1">
+							<div class="page4-contact-icon-wrap">
+								<img class="page4-contact-img" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/email.png" alt="">
+							</div>
+							<div class="page4-contact-detail page4-contact-detail-ani-1">
+								<span>czjdrj@163.com</span>
+							</div>
+						</div>
+					</div>
+					<div id="returnTop" class="center page4-home page4-home-ani">
+						<img class="page4-icon-home" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/home.png" alt="">
+						<span>home</span>
+						<img class="page4-icon-return" src="https://testbk1-1255560305.cos.ap-guangzhou.myqcloud.com/personal/return.png" alt="">
+					</div>
+				</div>
+				
+			</div>
+			<!-- Add Pagination -->
+			<!-- <div class="swiper-pagination h5-point"></div> -->
+		</div>
+	</div>
+	<script src="./js/lib/swiper.min.js"></script>
+	<script src="./js/index.js"></script>
+</body>
+</html>
